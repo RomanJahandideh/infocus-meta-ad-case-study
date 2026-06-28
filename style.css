@@ -869,6 +869,12 @@ body.lightbox-open { overflow: hidden; }
   .process-image-wrap { max-height: none; }
   .process-title, .process-desc, .process-detail-grid { min-height: 0; }
   .process-detail-grid { grid-template-columns: 1fr; gap: 18px; }
+
+  /* Put Previous/Next right under the image instead of after all the copy,
+     so the slide change stays visible without scrolling down and back up */
+  .process-info { display: contents; }
+  .process-frame { order: -2; }
+  .process-controls { order: -1; margin-top: 0; padding-top: 14px; border-top: none; }
 }
 
 /* Touch / coarse-pointer adjustments */
