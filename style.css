@@ -727,14 +727,16 @@ body.lightbox-open { overflow: hidden; }
   letter-spacing: 0;
   line-height: 1.18;
   margin-bottom: 18px;
-  min-height: 2.36em;
+  height: 2.36em;
+  overflow: hidden;
 }
 .process-desc {
   color: var(--ink-muted);
   line-height: 1.72;
   font-size: 1rem;
   margin-bottom: 24px;
-  min-height: 8.6em;
+  height: 9.6em;
+  overflow-y: auto;
 }
 
 .process-brief {
@@ -757,10 +759,10 @@ body.lightbox-open { overflow: hidden; }
   text-transform: uppercase;
 }
 
-.process-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: auto; padding-bottom: 32px; min-height: 178px; }
+.process-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: auto; padding-bottom: 32px; height: 178px; }
 .process-detail-grid h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
-.process-detail-grid > div { border-left: 2px solid var(--accent); padding-left: 16px; }
-.process-detail-grid p { font-size: 0.9rem; line-height: 1.55; color: var(--ink); }
+.process-detail-grid > div { border-left: 2px solid var(--accent); padding-left: 16px; height: 100%; }
+.process-detail-grid p { font-size: 0.9rem; line-height: 1.55; color: var(--ink); max-height: 130px; overflow-y: auto; }
 
 .process-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; border-top: 1px solid var(--line); margin-top: 20px; }
 .process-btn {
@@ -867,8 +869,13 @@ body.lightbox-open { overflow: hidden; }
 @media (max-width: 900px) {
   .process-stage { grid-template-columns: 1fr; min-height: 0; }
   .process-image-wrap { max-height: none; }
-  .process-title, .process-desc, .process-detail-grid { min-height: 0; }
-  .process-detail-grid { grid-template-columns: 1fr; gap: 18px; }
+  /* Keep fixed heights (not min-height: 0) so the card doesn't grow or
+     shrink as you move between artifacts with different copy lengths;
+     narrower columns wrap to more lines, so give text a bit more room
+     here and let any rare overflow scroll internally instead of resizing. */
+  .process-desc { height: 13em; }
+  .process-detail-grid { height: 220px; grid-template-columns: 1fr; gap: 18px; }
+  .process-detail-grid p { max-height: 90px; }
 
   /* Put Previous/Next right under the image instead of after all the copy,
      so the slide change stays visible without scrolling down and back up */
