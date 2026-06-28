@@ -1,7 +1,7 @@
 Drop your real image files into this folder using these exact names.
 Everything on the site (hero, rationale, process timeline, before/after
-slider, and the final-ad breakdown) is wired to these filenames already —
-no HTML/CSS/JS edits are required once the files are here.
+slider, and the final-ad breakdown) is wired to these filenames already.
+No HTML/CSS/JS edits are required once the files are here.
 
   final-ad.png     The final 1080 x 1350 px Meta ad.
                     Used in: Hero, Before/After (the "after" side),
@@ -11,18 +11,31 @@ no HTML/CSS/JS edits are required once the files are here.
                     Rationale section (e.g. the ad with callouts, or a
                     clean still of the full composition).
 
-  process-01.jpg     Step 01 — Concept A: The Film Canister
-  process-02.jpg     Step 02 — Concept B: The Reel, Alone
-                    (also used as the "before" image in the Before/After
-                    slider)
-  process-03.jpg     Step 03 — Building the Supporting Layout
-  process-04.jpg     Step 04 — Layout Alternate: Two Columns
-  process-05.jpg     Step 05 — Pencil Joins the Reel
-  process-06.jpg     Step 06 — Benefits Row, Square Format
-  process-07.jpg     Step 07 — Border & Copy Lock
-  process-08.jpg     Step 08 — Square Format, Final Copy
-  process-09.jpg     Step 09 — Material Alternate: Tested & Rejected
-  process-10.jpg     Step 10 — Final Direction
+  case-process-01-v7.jpg
+  case-process-02-v9.png
+  case-process-03-v11.png
+  case-process-04-v10.png
+  case-process-05-v1.png
+  case-process-06-v12.png
+  case-process-07-ls.png
+  case-process-08-v4.png
+  case-process-09-wooden-version.png
+  case-process-10-upd-new.png
+  case-process-11-v2.png
+  case-process-12-v3.png
+  case-process-13-v5.png
+  case-process-14-v6.png
+  case-process-15-v8.png
+  case-process-16-v13.png
+  case-process-17-v14.png
+  case-process-18-v15.png
+  case-process-19-v16.png
+  case-process-20-lido.png
+  case-process-21-rsnalle.png
+  case-process-22-rationale.png
+
+  process-01.jpg is still used as the "before" image in the Before/After
+  slider.
 
 Until a file is added, that slot shows a clean placeholder card naming the
 file it is waiting for, so nothing ever looks broken while you finish

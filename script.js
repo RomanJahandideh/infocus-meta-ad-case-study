@@ -22,6 +22,14 @@
   function pad(n) {
     return String(n).padStart(2, "0");
   }
+  function cleanDisplayText(value) {
+    return String(value)
+      .replace(/\s*[‐‑‒–—]\s*/g, ", ")
+      .replace(/-/g, " ")
+      .replace(/\s+,/g, ",")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  }
 
   /* ---------------------------------------------------------------------
      Missing-image placeholders (works for any image added later too,
@@ -36,7 +44,7 @@
       if (!frame) return;
       frame.classList.add("media-missing");
       var label = frame.querySelector(".media-placeholder-text");
-      if (label) label.textContent = "Add " + img.dataset.fallbackLabel.split("/").pop() + " to /assets";
+      if (label) label.textContent = cleanDisplayText("Add " + img.dataset.fallbackLabel.split("/").pop() + " to /assets");
     },
     true
   );
@@ -232,64 +240,224 @@
   --------------------------------------------------------------------- */
   var PROCESS_STEPS = [
     {
+      file: "assets/case-process-01-v7.jpg",
+      source: "v7.jpg",
+      tag: "Origin",
+      intent: "Literal film object",
       title: "Concept A — The Film Canister",
       desc: "The first concept built the whole ad around a distressed 35mm film canister, with the InFocus wordmark die-cut into the label so creative tools showed through the lettering itself. It was a strong nod to film stock, but the metaphor read more \"camera department\" than \"design studio.\"",
       changed: "Tested a vintage film-canister object as the hero visual, paired with its own headline (\"Turn ideas into bold visual communication\") and a filled red icon set.",
       connects: "Proved the idea of objects revealing tools through cut-outs — a device the final ad keeps, just on a different object."
     },
     {
+      file: "assets/case-process-02-v9.png",
+      source: "v9.png",
+      tag: "Object Test",
+      intent: "Reel as hero",
       title: "Concept B — The Reel, Alone",
       desc: "The object pivoted to a film reel with its spokes opened into compartments holding real design tools — pens, markers, a paint tube, a color-swatch grid. At this stage it was tested in the leanest possible layout: object, headline, subhead, footer, nothing else.",
       changed: "Replaced the canister with the film reel and dropped every supporting layout element to judge the object on its own.",
       connects: "Locked in the reel as the hero object and the transparent, tool-filled compartments that survive into the final ad."
     },
     {
+      file: "assets/case-process-03-v11.png",
+      source: "v11.png",
+      tag: "Layout",
+      intent: "Information hierarchy",
       title: "Building the Supporting Layout",
       desc: "With the reel object settled, the page needed a real layout around it. This pass stacked the headline into three lines and introduced a first benefits row — branding, industry projects, portfolio building — with a simple icon set and a thin divider line.",
       changed: "Added the first benefits-icon row and a full stacked headline treatment to the reel-alone composition.",
       connects: "Established the three-benefit structure that appears, restyled, in the submitted ad."
     },
     {
+      file: "assets/case-process-04-v10.png",
+      source: "v10.png",
+      tag: "Alternate",
+      intent: "Split composition",
       title: "Layout Alternate — Two Columns",
       desc: "In parallel, the same reel object was tried in a two-column format — image on the left, copy stacked on the right — to see whether a side-by-side layout read better than the stacked square.",
       changed: "Tested an image-left, text-right format as an alternative to the square stacked layout.",
       connects: "Ruled out the two-column split for the hero ad itself, though the format resurfaces briefly later while the border and copy were being locked."
     },
     {
+      file: "assets/case-process-05-v1.png",
+      source: "v1.png",
+      tag: "Build",
+      intent: "Second object",
       title: "Pencil Joins the Reel",
       desc: "A mechanical pencil was introduced as a second hero object alongside the reel — drawing and layout work standing next to filmmaking. Benefits row and border were stripped back out to judge the new pairing on its own.",
       changed: "Added the pencil object for the first time, paired directly with the reel.",
       connects: "Set the two-object pairing — reel plus pencil — that defines the final ad's entire hero visual."
     },
     {
+      file: "assets/case-process-06-v12.png",
+      source: "v12.png",
+      tag: "Structure",
+      intent: "Square ad system",
       title: "Benefits Row, Square Format",
       desc: "The reel-and-pencil pairing moved back into the square stacked-headline format, with the benefits row reinstated and the subheadline shifting toward \"build your creative future\" language.",
       changed: "Carried the new two-object pairing into the square layout and brought the benefits row back.",
       connects: "Converged the object pairing and the square layout into one composition for the first time."
     },
     {
+      file: "assets/case-process-07-ls.png",
+      source: "LS.png",
+      tag: "Copy Lock",
+      intent: "Border and CTA",
       title: "Border & Copy Lock",
       desc: "A thin outer border frame appeared for the first time, the subheadline locked to its final wording — \"Build your creative future in graphic design\" — and the benefits icons were redrawn in an outlined style with a boxed CTA bar at the bottom.",
       changed: "Introduced the border frame, the boxed bottom bar, and the final subheadline copy.",
       connects: "These three elements — border, boxed CTA, final subhead — all carry straight through to the submitted ad."
     },
     {
+      file: "assets/case-process-08-v4.png",
+      source: "v4.png",
+      tag: "Refine",
+      intent: "Cleaner pencil model",
       title: "Square Format, Final Copy",
       desc: "The locked copy, border, and boxed CTA were brought back into the square format alongside a cleaner pencil redesign — simplified yellow body, pink eraser cap — to match the reel's level of finish.",
       changed: "Unified the final copy and chrome (border, CTA box) with the square layout and a refined pencil model.",
       connects: "This is effectively the final ad's layout skeleton, one material pass away from done."
     },
     {
-      title: "Material Alternate — Tested & Rejected",
+      file: "assets/case-process-09-wooden-version.png",
+      source: "wooden version.png",
+      tag: "Rejected",
+      intent: "Material experiment",
+      title: "Material Alternate, Rejected",
       desc: "With the layout fully locked, the reel and pencil were rebuilt entirely from solid, toy-like wood-block cubes as an alternate material direction — same border, same copy, same CTA box, different texture.",
       changed: "Swapped the reel and pencil's material from grey technical brickwork to solid multicolor wood blocks, everything else held constant.",
       connects: "Tested side by side with the brick-and-glass version and set aside — the wood-block look felt too playful for the program's premium positioning, which is why the final ad went the other direction."
     },
     {
+      file: "assets/case-process-10-upd-new.png",
+      source: "UPD new.png",
+      tag: "Final",
+      intent: "Submitted direction",
       title: "Final Direction",
       desc: "The submitted ad keeps the grey technical-brick construction with transparent compartments revealing real, photographed design tools, paired with the refined pencil and a scatter of loose pieces in front — the direction chosen over the wood-block alternate.",
       changed: "Confirmed the brick-and-glass material over the wood-block alternate and finished the scatter, pencil banding, and final spacing.",
       connects: "This is the submitted ad — every prior stage is visible somewhere in this final frame."
+    },
+    {
+      file: "assets/case-process-11-v2.png",
+      source: "v2.png",
+      tag: "Variant",
+      intent: "Square composition check",
+      title: "Square Crop Stress Test",
+      desc: "A square-format pass checked how the objects, headline, and benefit row behaved when the ad was compressed into a tighter social-media canvas.",
+      changed: "Held the main idea constant while testing whether the layout still felt balanced in a more compact frame.",
+      connects: "Helped protect the final design from feeling like a poster simply cropped into an ad."
+    },
+    {
+      file: "assets/case-process-12-v3.png",
+      source: "v3.png",
+      tag: "Variant",
+      intent: "Material comparison",
+      title: "Wood Block Comparison",
+      desc: "This pass revisited the colorful block material after the core layout was already working, making the material choice easier to judge in context.",
+      changed: "Compared a more playful construction language against the cleaner brick-and-glass direction.",
+      connects: "Made the final material decision feel intentional rather than accidental."
+    },
+    {
+      file: "assets/case-process-13-v5.png",
+      source: "v5.png",
+      tag: "Refine",
+      intent: "Spacing and scale",
+      title: "Hero Object Scale Pass",
+      desc: "The object group was resized and repositioned to test how much visual weight the reel and pencil could carry before the typography started to feel secondary.",
+      changed: "Adjusted the object scale and negative space around the headline and CTA.",
+      connects: "Informs the final balance between readable message and memorable object."
+    },
+    {
+      file: "assets/case-process-14-v6.png",
+      source: "v6.png",
+      tag: "Refine",
+      intent: "CTA pressure",
+      title: "CTA Rhythm Pass",
+      desc: "This frame tested the lower information zone, making sure the date, countdown, and button worked as one clean action band.",
+      changed: "Tightened the bottom area so urgency and action read together instead of competing.",
+      connects: "Supports the final ad's direct-response behavior on Meta."
+    },
+    {
+      file: "assets/case-process-15-v8.png",
+      source: "v8.png",
+      tag: "Variant",
+      intent: "Early reel language",
+      title: "Early Reel Language",
+      desc: "An additional reel-focused version kept the concept close to film culture while still introducing graphic-design tools inside the object.",
+      changed: "Explored how much of the design story could live inside the reel itself.",
+      connects: "Strengthened the decision to make the hero object carry both film and design meaning."
+    },
+    {
+      file: "assets/case-process-16-v13.png",
+      source: "v13.png",
+      tag: "Square",
+      intent: "Compact hierarchy",
+      title: "Compact Hierarchy Study",
+      desc: "A square study tested headline density, benefit visibility, and object placement under tighter cropping.",
+      changed: "Compressed the layout while preserving the program name and visual metaphor.",
+      connects: "Helped the final direction stay adaptable across feed placements."
+    },
+    {
+      file: "assets/case-process-17-v14.png",
+      source: "v14.png",
+      tag: "Square",
+      intent: "Object read",
+      title: "Object Readability Study",
+      desc: "This version checked whether the reel and pencil still read quickly when surrounded by more compact typography and interface-like framing.",
+      changed: "Tested object clarity against a busier square composition.",
+      connects: "Pushed the final ad toward cleaner spacing and stronger object silhouette."
+    },
+    {
+      file: "assets/case-process-18-v15.png",
+      source: "v15.png",
+      tag: "Square",
+      intent: "Information density",
+      title: "Information Density Study",
+      desc: "A denser square option tested how much supporting information could be carried before the ad stopped feeling premium.",
+      changed: "Balanced benefit messaging against open space and object focus.",
+      connects: "Helped determine what to keep visible and what to simplify."
+    },
+    {
+      file: "assets/case-process-19-v16.png",
+      source: "v16.png",
+      tag: "Square",
+      intent: "Final polish trial",
+      title: "Final Polish Trial",
+      desc: "This late-stage square trial pushed the composition toward a more finished presentation, with cleaner object rendering and tighter ad furniture.",
+      changed: "Refined the presentation language after the core metaphor was already selected.",
+      connects: "Bridges the exploratory square studies with the submitted final direction."
+    },
+    {
+      file: "assets/case-process-20-lido.png",
+      source: "LIDO.png",
+      tag: "Alternate",
+      intent: "Left image direction",
+      title: "Left-Image Direction",
+      desc: "A left-weighted layout tested whether a more editorial split could make the ad feel like a premium portfolio composition.",
+      changed: "Shifted visual emphasis to one side and tested a calmer reading order.",
+      connects: "Reinforced why the final ad keeps the object and action band more directly integrated."
+    },
+    {
+      file: "assets/case-process-21-rsnalle.png",
+      source: "RSNALLE.png",
+      tag: "Alternate",
+      intent: "Tall layout pressure",
+      title: "Tall Format Pressure Test",
+      desc: "A taller composition checked how the idea behaved when the hierarchy had more vertical stretch and less square stability.",
+      changed: "Tested the relationship between vertical spacing, object scale, and headline position.",
+      connects: "Helped tune the final site case study for both feed and story thinking."
+    },
+    {
+      file: "assets/case-process-22-rationale.png",
+      source: "Rationale.png",
+      tag: "Rationale",
+      intent: "Design argument",
+      title: "Annotated Rationale Board",
+      desc: "The rationale board turns the finished visual into a decision map, showing how the reel, tool compartments, pencil, loose pieces, and CTA all support the same message.",
+      changed: "Moved from making the ad to explaining why each part earns its place.",
+      connects: "Completes the case study by making the design logic visible to a reviewer."
     }
   ];
 
@@ -302,6 +470,8 @@
     var stageTag = document.getElementById("processStageTag");
     var titleEl = document.getElementById("processTitle");
     var descEl = document.getElementById("processDesc");
+    var sourceEl = document.getElementById("processSource");
+    var intentEl = document.getElementById("processIntent");
     var changedEl = document.getElementById("processChanged");
     var connectsEl = document.getElementById("processConnects");
     var counterCurrent = document.getElementById("processCounterCurrent");
@@ -320,7 +490,7 @@
     function buildFilmstrip() {
       PROCESS_STEPS.forEach(function (step, i) {
         var n = pad(i + 1);
-        var path = "assets/process-" + n + ".jpg";
+        var path = step.file;
 
         var btn = document.createElement("button");
         btn.type = "button";
@@ -328,7 +498,7 @@
         btn.setAttribute("data-media-frame", "");
         btn.setAttribute("role", "tab");
         btn.setAttribute("aria-selected", i === 0 ? "true" : "false");
-        btn.setAttribute("aria-label", "Stage " + n + ": " + step.title);
+        btn.setAttribute("aria-label", cleanDisplayText("Stage " + n + ": " + step.title));
 
         var thumb = document.createElement("img");
         thumb.src = path;
@@ -344,9 +514,14 @@
         numTag.className = "fs-num";
         numTag.textContent = n;
 
+        var tag = document.createElement("span");
+        tag.className = "fs-tag";
+        tag.textContent = step.tag;
+
         btn.appendChild(thumb);
         btn.appendChild(placeholder);
         btn.appendChild(numTag);
+        btn.appendChild(tag);
         btn.addEventListener("click", function () {
           renderStep(i);
         });
@@ -359,26 +534,28 @@
       var step = PROCESS_STEPS[currentStep];
       var n = pad(currentStep + 1);
 
-      stageLabel.textContent = "Stage " + n + " / " + pad(total);
-      var isFinal = currentStep === total - 1;
-      stageTag.textContent = isFinal ? "Final Direction" : "Exploration";
-      stageTag.classList.toggle("is-final", isFinal);
+      stageLabel.textContent = "Artifact " + n + " / " + pad(total);
+      var isFinal = step.tag === "Final";
+      stageTag.textContent = step.tag;
+      stageTag.classList.toggle("is-final", isFinal || step.tag === "Rationale");
       bigNumber.textContent = n;
       counterCurrent.textContent = n;
-      titleEl.textContent = step.title;
-      descEl.textContent = step.desc;
-      changedEl.textContent = step.changed;
-      connectsEl.textContent = step.connects;
+      titleEl.textContent = cleanDisplayText(step.title);
+      descEl.textContent = cleanDisplayText(step.desc);
+      if (sourceEl) sourceEl.textContent = cleanDisplayText("Source " + step.source);
+      if (intentEl) intentEl.textContent = cleanDisplayText("Intent " + step.intent);
+      changedEl.textContent = cleanDisplayText(step.changed);
+      connectsEl.textContent = cleanDisplayText(step.connects);
       prevBtn.disabled = currentStep === 0;
       nextBtn.disabled = currentStep === total - 1;
       progressFill.style.width = (currentStep / (total - 1)) * 100 + "%";
 
       function swapImage() {
-        var path = "assets/process-" + n + ".jpg";
+        var path = step.file;
         image.src = path;
-        image.alt = "Process stage " + n + ": " + step.title;
+        image.alt = "Process artifact " + n + ": " + step.title;
         image.dataset.fallbackLabel = path;
-        placeholderText.textContent = "Add process-" + n + ".jpg to /assets";
+        placeholderText.textContent = cleanDisplayText("Add " + path.split("/").pop() + " to /assets");
         var mediaFrame = image.closest("[data-media-frame]");
         if (mediaFrame) mediaFrame.classList.remove("media-missing");
       }
@@ -507,13 +684,13 @@
       btn.style.top = spot.y + "%";
       btn.textContent = String(n);
       btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-label", n + ". " + spot.title + " — show explanation");
+      btn.setAttribute("aria-label", cleanDisplayText(n + ". " + spot.title + " show explanation"));
 
       var tooltip = document.createElement("div");
       tooltip.className = "hotspot-tooltip";
       tooltip.id = "hotspot-tip-" + n;
       tooltip.setAttribute("role", "dialog");
-      tooltip.innerHTML = "<h5>" + n + ". " + spot.title + "</h5><p>" + spot.text + "</p>";
+      tooltip.innerHTML = "<h5>" + cleanDisplayText(n + ". " + spot.title) + "</h5><p>" + cleanDisplayText(spot.text) + "</p>";
 
       if (spot.x > 60) {
         tooltip.style.right = 100 - spot.x + 4 + "%";
@@ -593,6 +770,46 @@
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && overlay.classList.contains("is-open")) close();
+    });
+  })();
+
+  /* ---------------------------------------------------------------------
+     Bouncy interaction polish
+  --------------------------------------------------------------------- */
+  (function setupBouncyInteractions() {
+    if (prefersReducedMotion) return;
+
+    var springTargets = document.querySelectorAll(
+      ".btn, .deliverable, .process-btn, .filmstrip-item, .rationale-card, .download-card, .hotspot"
+    );
+
+    springTargets.forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        var rect = el.getBoundingClientRect();
+        var ripple = document.createElement("span");
+        ripple.className = "bounce-ripple";
+        ripple.style.left = e.clientX - rect.left + "px";
+        ripple.style.top = e.clientY - rect.top + "px";
+        el.appendChild(ripple);
+        window.setTimeout(function () {
+          ripple.remove();
+        }, 680);
+      });
+    });
+
+    var processStage = document.getElementById("processStage");
+    if (!processStage || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    processStage.addEventListener("pointermove", function (e) {
+      var rect = processStage.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      processStage.style.transform =
+        "perspective(1200px) rotateX(" + (-y * 2.2).toFixed(2) + "deg) rotateY(" + (x * 2.6).toFixed(2) + "deg)";
+    });
+
+    processStage.addEventListener("pointerleave", function () {
+      processStage.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg)";
     });
   })();
 
