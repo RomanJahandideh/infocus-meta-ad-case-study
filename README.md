@@ -1,19 +1,53 @@
 # InFocus Film School — Meta Ad Case Study
 
-An interactive case-study site for a take-home Meta ad challenge (1080×1350 px) for InFocus Film School's Graphic + Digital Design program. Built with plain HTML, CSS, and JavaScript — no frameworks.
+A static, single-page case-study site built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step, no dependencies.
 
-Sections: hero with a magnifying-glass zoom on the final ad, design rationale, an interactive 22-artifact process wall, a before/after concept-shift slider, a numbered hotspot breakdown of the final ad, about, and contact.
+**Live:** http://romanjahandideh.com/infocus-meta-ad-case-study/
 
-## Open
+## Tech Stack
 
-Open `index.html` in a browser. No build step.
+**HTML5**
+- Semantic markup, no templating engine
 
-## Add your images
+**CSS3**
+- Custom properties for design tokens (color, spacing, easing curves)
+- Grid and Flexbox layouts; `clamp()` for fluid type and spacing
+- `position: sticky`, `aspect-ratio`, `backdrop-filter`
+- `prefers-reduced-motion` and `hover`/`pointer` media features to branch behavior between mouse and touch input
 
-See `assets/README.txt` for the exact filenames each section expects (`final-ad.png`, `rationale.png`, and the `case-process-*` files). Until they're added, each slot shows a clean placeholder naming the file it needs.
+**JavaScript**
+- No external libraries, frameworks, or polyfills
+- `IntersectionObserver` for scroll-triggered reveals and active-nav-link tracking
+- `requestAnimationFrame` easing loop driving the magnifier interaction
+- Touch and Pointer Events powering the before/after comparison slider and swipe-based carousel navigation
+- Code organized as self-contained IIFEs, one per feature
 
-## Edit copy
+**Fonts**
+- Inter / Inter Tight, served from Google Fonts
 
-- Process timeline text → `script.js`, `PROCESS_STEPS` array.
-- Final ad hotspot labels/positions → `script.js`, `HOTSPOTS` array.
-- Everything else → directly in `index.html`.
+**Accessibility**
+- Skip-to-content link, `:focus-visible` states, `aria-*` attributes on interactive components
+- Touch-only controls are visually hidden (not `display: none`) so they stay reachable for keyboard and screen-reader users
+
+## Project Structure
+
+```
+index.html   Markup for every section
+style.css     All styling, mobile-first, organized by section
+script.js     All behavior, one IIFE per feature
+assets/       Images referenced by index.html
+```
+
+## Running Locally
+
+No build step or package manager required. Either open `index.html` directly in a browser, or serve the directory with any static file server:
+
+```bash
+npx serve .
+# or
+python -m http.server
+```
+
+## Browser Support
+
+Targets current evergreen browsers (Chrome, Safari, Firefox, Edge) and degrades gracefully where `backdrop-filter` or `aspect-ratio` are unsupported.
