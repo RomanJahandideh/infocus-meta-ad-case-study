@@ -21,11 +21,8 @@ No HTML/CSS/JS edits are required once the files are here.
   case-process-08-v4.png
   case-process-09-wooden-version.png
   case-process-10-upd-new.png
-  case-process-11-v2.png
-  case-process-12-v3.png
   case-process-13-v5.png
   case-process-14-v6.png
-  case-process-15-v8.png
   case-process-16-v13.png
   case-process-17-v14.png
   case-process-18-v15.png
@@ -33,6 +30,10 @@ No HTML/CSS/JS edits are required once the files are here.
   case-process-20-lido.png
   case-process-21-rsnalle.png
   case-process-22-rationale.png
+
+  (case-process-11-v2.png, -12-v3.png, and -15-v8.png were removed —
+  each was a pixel-for-pixel duplicate of -06-v12.png, -09-wooden-version.png,
+  and -05-v1.png respectively, just exported under a different source name.)
 
   Earlier paper-cut and canister exploration, added later and placed at
   the start of the timeline (the actual order each artifact appears in
