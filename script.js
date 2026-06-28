@@ -356,6 +356,46 @@
 
     if (progress) progress.addEventListener("click", function (e) { var r = progress.getBoundingClientRect(); var ratio = clampNum((e.clientX - r.left) / r.width, 0, 1); renderStep(Math.round(ratio * (total - 1))); });
 
+    /* Swipe left/right to browse artifacts on touch devices (mobile/iPad) */
+    (function setupSwipe() {
+      var stageEl = document.getElementById("processStage");
+      if (!stageEl) return;
+      var SWIPE_THRESHOLD = 40;
+      var startX = 0, startY = 0, tracking = false, lockedHorizontal = false;
+
+      stageEl.addEventListener("touchstart", function (e) {
+        if (e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        tracking = true;
+        lockedHorizontal = false;
+      }, { passive: true });
+
+      stageEl.addEventListener("touchmove", function (e) {
+        if (!tracking) return;
+        var dx = e.touches[0].clientX - startX;
+        var dy = e.touches[0].clientY - startY;
+        if (!lockedHorizontal && Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+          lockedHorizontal = true;
+        }
+        if (lockedHorizontal) e.preventDefault();
+      }, { passive: false });
+
+      stageEl.addEventListener("touchend", function (e) {
+        if (!tracking) return;
+        tracking = false;
+        var touch = e.changedTouches[0];
+        var dx = touch.clientX - startX;
+        var dy = touch.clientY - startY;
+        if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) renderStep(currentStep + 1);
+          else renderStep(currentStep - 1);
+        }
+      });
+
+      stageEl.addEventListener("touchcancel", function () { tracking = false; });
+    })();
+
     var processInView = false;
     var processSectionObserver = new IntersectionObserver(function (entries) { processInView = entries[0].isIntersecting; }, { threshold: 0.3 });
     processSectionObserver.observe(stageSection);
