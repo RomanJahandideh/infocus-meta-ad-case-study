@@ -35,8 +35,8 @@
   there. Hotspot copy for the Final Ad Breakdown lives in the HOTSPOTS array
   in the same file.
 
-  The "Source File" link in the hero has a TODO marker below — replace it
-  with your real Figma/Drive/source link.
+  The "Source File" link in the hero and the "Open PSD" button in the
+  Downloads section both point to the same Google Drive PSD link.
   ============================================================================
 -->
 <meta charset="UTF-8">
@@ -68,6 +68,7 @@
         <li><a href="#rationale" class="nav-link" data-nav>Rationale</a></li>
         <li><a href="#process" class="nav-link" data-nav>Process</a></li>
         <li><a href="#breakdown" class="nav-link" data-nav>Breakdown</a></li>
+        <li><a href="#downloads" class="nav-link" data-nav>Downloads</a></li>
         <li><a href="#about" class="nav-link" data-nav>About</a></li>
         <li><a href="#contact" class="nav-link" data-nav>Contact</a></li>
       </ul>
@@ -103,8 +104,7 @@
             <span class="deliverable-label">Final Ad</span>
             <span class="deliverable-action">Download <span aria-hidden="true">↓</span></span>
           </a>
-          <!-- TODO: replace href="#" with your real source-file link (Figma / Drive / etc.) -->
-          <a class="deliverable" href="#" role="listitem">
+          <a class="deliverable" href="https://drive.google.com/file/d/1bXUFR54UTB0GgSIbYOk-MXs-N-EdULMd/view?usp=sharing" target="_blank" rel="noopener" role="listitem">
             <span class="deliverable-label">Source File</span>
             <span class="deliverable-action">Open <span aria-hidden="true">↗</span></span>
           </a>
@@ -146,12 +146,15 @@
 
       <div class="rationale-layout">
 
-        <div class="rationale-visual reveal" data-media-frame>
+        <div class="rationale-visual reveal" data-media-frame data-lightbox-trigger>
           <img src="assets/rationale.png" alt="Annotated overview of the final ad highlighting key design decisions" class="rationale-image" data-fallback-label="assets/rationale.png">
           <div class="media-placeholder" aria-hidden="true">
             <span class="media-placeholder-icon">▦</span>
             <span class="media-placeholder-text">Add rationale.png to /assets</span>
           </div>
+          <span class="media-expand-hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4a1 1 0 0 0-1 1v5M15 3h5a1 1 0 0 1 1 1v5M9 21H4a1 1 0 0 1-1-1v-5M15 21h5a1 1 0 0 0 1-1v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
 
         <div class="rationale-cards">
@@ -229,12 +232,15 @@
         <div class="process-frame">
           <span class="process-frame-number" id="processBigNumber" aria-hidden="true">01</span>
           <div class="process-sprockets" aria-hidden="true"></div>
-          <div class="process-image-wrap" data-media-frame>
+          <div class="process-image-wrap" data-media-frame data-lightbox-trigger>
             <img src="" alt="" id="processImage" class="process-image">
             <div class="media-placeholder media-placeholder--light" aria-hidden="true">
               <span class="media-placeholder-icon">▦</span>
               <span class="media-placeholder-text" id="processPlaceholderText">Add process-01.jpg to /assets</span>
             </div>
+            <span class="media-expand-hint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4a1 1 0 0 0-1 1v5M15 3h5a1 1 0 0 1 1 1v5M9 21H4a1 1 0 0 1-1-1v-5M15 21h5a1 1 0 0 0 1-1v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </div>
           <div class="process-sprockets" aria-hidden="true"></div>
         </div>
@@ -343,11 +349,46 @@
     </div>
   </section>
 
-  <!-- ============================== 6. ABOUT ============================== -->
+  <!-- ============================== 6. DOWNLOADS ============================== -->
+  <section class="downloads" id="downloads">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">06 — Downloads</p>
+        <h2>Grab the files</h2>
+        <p class="section-intro">The final deliverable and its editable source, ready to download directly.</p>
+      </header>
+
+      <div class="downloads-grid">
+
+        <div class="download-card reveal" style="--delay:0ms">
+          <span class="download-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="7" width="30" height="30" rx="3" stroke="currentColor" stroke-width="2"/><path d="M14 27 L20 19 L25 24 L30 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="15" r="2" fill="currentColor"/></svg>
+          </span>
+          <h3>Final Ad — PNG</h3>
+          <p>The final 1080 × 1350 px Meta ad exactly as submitted, full resolution.</p>
+          <span class="download-meta">PNG · 1080 × 1350</span>
+          <a class="btn btn-primary" href="assets/final-ad.png" download>Download PNG <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <div class="download-card reveal" style="--delay:80ms">
+          <span class="download-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="7" width="30" height="30" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 31 V13 h5.5 a4.5 4.5 0 0 1 0 9 H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Source File — PSD</h3>
+          <p>The full editable Photoshop file with every layer, group, and smart object used to build the ad.</p>
+          <span class="download-meta">PSD · via Google Drive</span>
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/1bXUFR54UTB0GgSIbYOk-MXs-N-EdULMd/view?usp=sharing" target="_blank" rel="noopener">Open PSD <span aria-hidden="true">↗</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 7. ABOUT ============================== -->
   <section class="about" id="about">
     <div class="container about-inner">
       <div class="about-content reveal">
-        <p class="eyebrow">06 — About the Designer</p>
+        <p class="eyebrow">07 — About the Designer</p>
         <h2>About the Designer</h2>
         <p>Roman Jahandideh is a graphic designer and visual storyteller based in Vancouver, combining brand design, motion, 3D visualization, and interactive media. His work focuses on visual hierarchy, concept-driven communication, and building memorable digital and print assets.</p>
 
@@ -371,7 +412,7 @@
   <section class="contact" id="contact">
     <div class="container">
       <header class="section-head reveal">
-        <p class="eyebrow">07 — Contact</p>
+        <p class="eyebrow">08 — Contact</p>
         <h2>Let's talk about the next project</h2>
       </header>
 
@@ -393,6 +434,13 @@
   </section>
 
 </main>
+
+<div class="lightbox-overlay" id="lightboxOverlay" aria-hidden="true">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close enlarged image">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6 6 L18 18 M18 6 L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <img src="" alt="" class="lightbox-img" id="lightboxImg">
+</div>
 
 <footer class="site-footer">
   <div class="container footer-inner">

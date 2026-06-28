@@ -546,6 +546,47 @@
   })();
 
   /* ---------------------------------------------------------------------
+     Lightbox — click any rationale/process image to view it full-size
+  --------------------------------------------------------------------- */
+  (function setupLightbox() {
+    var overlay = document.getElementById("lightboxOverlay");
+    var lightboxImg = document.getElementById("lightboxImg");
+    var closeBtn = document.getElementById("lightboxClose");
+    if (!overlay || !lightboxImg || !closeBtn) return;
+
+    function open(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "";
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function close() {
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      lightboxImg.src = "";
+    }
+
+    document.addEventListener("click", function (e) {
+      var trigger = e.target.closest("[data-lightbox-trigger]");
+      if (!trigger || trigger.classList.contains("media-missing")) return;
+      var img = trigger.querySelector("img");
+      if (!img) return;
+      open(img.currentSrc || img.src, img.alt);
+    });
+
+    closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("is-open")) close();
+    });
+  })();
+
+  /* ---------------------------------------------------------------------
      Footer year
   --------------------------------------------------------------------- */
   var footerYear = document.getElementById("footerYear");
