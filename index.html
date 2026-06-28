@@ -387,13 +387,23 @@
       </header>
 
       <div class="breakdown-stage reveal">
-        <div class="breakdown-frame" id="breakdownFrame" data-media-frame>
-          <img src="assets/final-ad.png" alt="Final ad with numbered breakdown markers" class="breakdown-image" data-fallback-label="assets/final-ad.png">
-          <div class="media-placeholder" aria-hidden="true">
-            <span class="media-placeholder-icon">▦</span>
-            <span class="media-placeholder-text">Add final ad.png to /assets</span>
+        <div class="breakdown-layout">
+          <div class="breakdown-frame" id="breakdownFrame" data-media-frame>
+            <img src="assets/final-ad.png" alt="Final ad with numbered breakdown markers" class="breakdown-image" data-fallback-label="assets/final-ad.png">
+            <div class="media-placeholder" aria-hidden="true">
+              <span class="media-placeholder-icon">▦</span>
+              <span class="media-placeholder-text">Add final ad.png to /assets</span>
+            </div>
+            <div class="hotspot-layer" id="hotspotLayer"></div>
           </div>
-          <div class="hotspot-layer" id="hotspotLayer"></div>
+
+          <aside class="breakdown-detail" id="breakdownDetail" aria-live="polite">
+            <div class="breakdown-detail-body" id="breakdownDetailBody">
+              <span class="breakdown-detail-index" id="breakdownDetailIndex">Tip</span>
+              <h4 id="breakdownDetailTitle">Select a marker</h4>
+              <p id="breakdownDetailText">Click any numbered marker on the ad to read the reasoning behind it.</p>
+            </div>
+          </aside>
         </div>
         <p class="breakdown-hint">Tip: click any numbered marker on the ad to read the reasoning behind it.</p>
       </div>

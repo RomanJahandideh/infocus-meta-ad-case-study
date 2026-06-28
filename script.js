@@ -445,24 +445,85 @@
   (function setupHotspots() {
     var layer = document.getElementById("hotspotLayer");
     if (!layer) return;
+    var detailBody = document.getElementById("breakdownDetailBody");
+    var detailIndexEl = document.getElementById("breakdownDetailIndex");
+    var detailTitleEl = document.getElementById("breakdownDetailTitle");
+    var detailTextEl = document.getElementById("breakdownDetailText");
+    var BADGE_OFFSET = 30; // px the numbered badge sits away from its anchor point
     var activeBtn = null;
+
     function closeAll() {
       layer.querySelectorAll(".hotspot-tooltip.is-visible").forEach(function (t) { t.classList.remove("is-visible"); });
       layer.querySelectorAll(".hotspot.is-active").forEach(function (b) { b.classList.remove("is-active"); b.setAttribute("aria-expanded", "false"); });
       activeBtn = null;
     }
+
+    function showDetail(n, spot) {
+      if (!detailBody) return;
+      detailIndexEl.textContent = pad(n) + " / " + pad(HOTSPOTS.length);
+      detailTitleEl.textContent = cleanDisplayText(spot.title);
+      detailTextEl.textContent = cleanDisplayText(spot.text);
+      detailBody.classList.remove("is-animating");
+      void detailBody.offsetWidth; // restart the CSS animation on every marker change
+      detailBody.classList.add("is-animating");
+    }
+
     HOTSPOTS.forEach(function (spot, i) {
       var n = i + 1;
+
+      // Direction points the badge (and its leader line) away from the
+      // nearest edge, toward the middle of the ad, so it stays in frame.
+      var dx = spot.x > 60 ? -BADGE_OFFSET : BADGE_OFFSET;
+      var dy = spot.y > 65 ? -BADGE_OFFSET : BADGE_OFFSET;
+      var leaderLength = Math.round(Math.sqrt(dx * dx + dy * dy));
+      var leaderAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+      var group = document.createElement("div");
+      group.className = "hotspot-group";
+      group.style.left = spot.x + "%";
+      group.style.top = spot.y + "%";
+
+      var anchor = document.createElement("span");
+      anchor.className = "hotspot-anchor";
+      anchor.setAttribute("aria-hidden", "true");
+
+      var leader = document.createElement("span");
+      leader.className = "hotspot-leader";
+      leader.style.width = leaderLength + "px";
+      leader.style.transform = "rotate(" + leaderAngle + "deg)";
+      leader.setAttribute("aria-hidden", "true");
+
       var btn = document.createElement("button");
-      btn.type = "button"; btn.className = "hotspot"; btn.style.left = spot.x + "%"; btn.style.top = spot.y + "%"; btn.textContent = String(n);
+      btn.type = "button"; btn.className = "hotspot"; btn.textContent = String(n);
+      btn.style.setProperty("--dx", dx + "px");
+      btn.style.setProperty("--dy", dy + "px");
       btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-label", cleanDisplayText(n + ". " + spot.title + " show explanation"));
+
+      var arrow = document.createElement("span");
+      arrow.className = "hotspot-arrow";
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.innerHTML = '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      btn.appendChild(arrow);
+
       var tooltip = document.createElement("div"); tooltip.className = "hotspot-tooltip"; tooltip.id = "hotspot-tip-" + n; tooltip.setAttribute("role", "dialog");
       tooltip.innerHTML = "<h5>" + cleanDisplayText(n + ". " + spot.title) + "</h5><p>" + cleanDisplayText(spot.text) + "</p>";
       if (spot.x > 60) { tooltip.style.right = 100 - spot.x + 4 + "%"; tooltip.style.left = "auto"; } else { tooltip.style.left = spot.x + 4 + "%"; tooltip.style.right = "auto"; }
       if (spot.y > 65) { tooltip.style.bottom = 100 - spot.y + 6 + "%"; tooltip.style.top = "auto"; } else { tooltip.style.top = spot.y + "%"; tooltip.style.bottom = "auto"; }
       btn.setAttribute("aria-controls", tooltip.id);
-      btn.addEventListener("click", function (e) { e.stopPropagation(); var willOpen = !tooltip.classList.contains("is-visible"); closeAll(); if (willOpen) { tooltip.classList.add("is-visible"); btn.classList.add("is-active"); btn.setAttribute("aria-expanded", "true"); activeBtn = btn; } });
-      layer.appendChild(btn); layer.appendChild(tooltip);
+
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var willOpen = !tooltip.classList.contains("is-visible");
+        closeAll();
+        if (willOpen) { tooltip.classList.add("is-visible"); btn.classList.add("is-active"); btn.setAttribute("aria-expanded", "true"); activeBtn = btn; }
+        showDetail(n, spot);
+      });
+
+      group.appendChild(anchor);
+      group.appendChild(leader);
+      group.appendChild(btn);
+      layer.appendChild(group);
+      layer.appendChild(tooltip);
     });
     document.addEventListener("click", function (e) { if (activeBtn && !layer.contains(e.target)) closeAll(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
