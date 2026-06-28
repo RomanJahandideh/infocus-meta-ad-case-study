@@ -492,6 +492,26 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   .rationale-visual { position: static; max-width: 520px; margin: 0 auto 16px; }
 }
 
+/* ============================== GESTALT THEORY ============================== */
+.gestalt { padding: var(--section-pad) 0; background: var(--bg-alt); }
+.gestalt-applications { margin-top: clamp(56px, 7vw, 96px); max-width: 900px; }
+.gestalt-applications h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+.gestalt-applications-intro { color: var(--ink-muted); line-height: 1.7; max-width: 640px; margin-bottom: 32px; }
+.gestalt-application-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.gestalt-application {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 26px 28px;
+  box-shadow: var(--shadow-sm);
+}
+.gestalt-application h4 { font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+.gestalt-application p { color: var(--ink-muted); line-height: 1.65; font-size: 0.94rem; }
+
+@media (max-width: 900px) {
+  .gestalt-application-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- Lightbox expand hint (rationale + process images) ---------- */
 [data-lightbox-trigger] { cursor: zoom-in; }
 .media-expand-hint {

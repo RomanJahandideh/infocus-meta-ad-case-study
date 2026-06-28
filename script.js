@@ -34,16 +34,25 @@
   /* ---------------------------------------------------------------------
      Missing image placeholders
   --------------------------------------------------------------------- */
+  function markImageMissing(img) {
+    var frame = img.closest("[data-media-frame]");
+    if (!frame) return;
+    frame.classList.add("media-missing");
+    var label = frame.querySelector(".media-placeholder-text");
+    if (label) label.textContent = cleanDisplayText("Add " + img.dataset.fallbackLabel.split("/").pop() + " to /assets");
+  }
+  function markImageLoaded(img) {
+    var frame = img.closest("[data-media-frame]");
+    if (frame) frame.classList.remove("media-missing");
+    img.classList.add("is-visible");
+  }
+
   document.addEventListener(
     "error",
     function (e) {
       var img = e.target;
       if (!img || img.tagName !== "IMG" || !img.dataset || !img.dataset.fallbackLabel) return;
-      var frame = img.closest("[data-media-frame]");
-      if (!frame) return;
-      frame.classList.add("media-missing");
-      var label = frame.querySelector(".media-placeholder-text");
-      if (label) label.textContent = cleanDisplayText("Add " + img.dataset.fallbackLabel.split("/").pop() + " to /assets");
+      markImageMissing(img);
     },
     true
   );
@@ -53,12 +62,18 @@
     function (e) {
       var img = e.target;
       if (!img || img.tagName !== "IMG" || !img.dataset || !img.dataset.fallbackLabel) return;
-      var frame = img.closest("[data-media-frame]");
-      if (frame) frame.classList.remove("media-missing");
-      img.classList.add("is-visible");
+      markImageLoaded(img);
     },
     true
   );
+
+  /* Catch images whose load/error event already fired before this script
+     (placed at the end of the document) had a chance to attach listeners. */
+  document.querySelectorAll("img[data-fallback-label]").forEach(function (img) {
+    if (!img.complete) return;
+    if (img.naturalWidth === 0) markImageMissing(img);
+    else markImageLoaded(img);
+  });
 
   /* ---------------------------------------------------------------------
      Header: scroll state + mobile nav toggle + active link highlighting
