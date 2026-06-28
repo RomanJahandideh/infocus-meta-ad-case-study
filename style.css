@@ -896,7 +896,7 @@ body.lightbox-open { overflow: hidden; }
   .filmstrip { -webkit-overflow-scrolling: touch; touch-action: pan-x; padding-bottom: 28px; }
   .filmstrip-item { width: 84px; height: 110px; }
 
-  /* Browsing the 22 artifacts happens by swiping the card, not tapping buttons.
+  /* Browsing the artifacts happens by swiping the card, not tapping buttons.
      Buttons stay in the DOM (visually hidden, not display:none) so they remain
      reachable for keyboard and screen-reader users on touch devices. */
   .process-stage { touch-action: pan-y; }

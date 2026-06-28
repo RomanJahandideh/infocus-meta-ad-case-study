@@ -34,6 +34,28 @@ No HTML/CSS/JS edits are required once the files are here.
   case-process-21-rsnalle.png
   case-process-22-rationale.png
 
+  Earlier paper-cut and canister exploration, added later and placed at
+  the start of the timeline (the actual order each artifact appears in
+  is controlled by PROCESS_STEPS in script.js, not by these filenames):
+
+  case-process-paper-01-tunnel.png
+  case-process-paper-02-ribbon.png
+  case-process-paper-03-sketch.png
+  case-process-paper-04-options.png
+  case-process-reelphoto-01.png
+  case-process-reelphoto-02.png
+  case-process-lego-reel.png
+  case-process-lego-camera.png
+  case-process-canister-window-01.png
+  case-process-canister-window-02-design.png
+  case-process-canister-label-03.png
+  case-process-canister-diecut-infocus.png
+  case-process-canister-diecut-design.png
+  case-process-canister-diecut-create.png
+  case-process-canister-studio-options.png
+  case-process-canister-altfinal-01.png
+  case-process-canister-altfinal-02.png
+
   process-01.jpg is still used as the "before" image in the Before/After
   slider.
 
