@@ -1009,3 +1009,110 @@ body.lightbox-open { overflow: hidden; }
   .filmstrip-item { width: 72px; height: 90px; }
   .hotspot-tooltip { width: 200px; }
 }
+
+/* ===== Emergency fix: restore visibility ===== */
+/* Hide experimental parallax while we debug visual issues */
+.hero-parallax { display: none !important; }
+/* Hide custom cursor on all devices until confirmed safe */
+.custom-cursor { display: none !important; }
+/* Ensure hero title is visible (avoid transparent clipped text) */
+.hero-title { color: var(--ink) !important; background: none !important; -webkit-background-clip: initial !important; background-clip: initial !important; text-shadow: none !important; }
+
+
+/* ---------- Parallax layers (hero) ---------- */
+.hero-parallax { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero > .container, .hero-inner { position: relative; z-index: 2; }
+.parallax-layer { position: absolute; inset: -10% -20% -10% -20%; background-repeat: no-repeat; background-position: center; background-size: cover; will-change: transform; transition: transform 0.35s var(--ease); opacity: 0.9; }
+
+/* ---------- Custom cursor ---------- */
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(17,17,17,0.9);
+  transform: translate3d(-9999px,-9999px,0);
+  pointer-events: none;
+  z-index: 1200;
+  transition: width 0.18s var(--ease), height 0.18s var(--ease), background 0.2s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  mix-blend-mode: difference;
+}
+.custom-cursor.is-visible { opacity: 1; }
+.custom-cursor.cursor--hover { width: 46px; height: 46px; background: var(--accent); mix-blend-mode: normal; box-shadow: 0 12px 36px rgba(185,0,0,0.18); }
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none; }
+}
+
+/* ---------- Small polish ---------- */
+.hero-title { transform-origin: center; transition: transform 0.9s var(--ease); }
+.hero-title:hover { transform: translateY(-6px) scale(1.01); }
+
+/* ========== Bold, artistic typography and animated gradient ========== */
+.hero-title {
+  background: linear-gradient(90deg, #111 0%, #111 35%, #b90000 60%, #124e78 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+  text-shadow: 0 6px 28px rgba(17,17,17,0.18);
+}
+.hero-title.animated {
+  animation: hero-gradient-slide 5.8s linear infinite;
+  background-size: 240% 100%;
+}
+@keyframes hero-gradient-slide {
+  0% { background-position: 0% 50%; }
+  30% { background-position: 100% 50%; }
+  70% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* CTA emphasis and sweep */
+.btn-primary { position: relative; overflow: visible; }
+.btn-primary::after {
+  content: "";
+  position: absolute; inset: 0; left: -40%; right: -40%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 45%, rgba(255,255,255,0.12) 55%, transparent 100%);
+  transform: skewX(-12deg) translateX(-120%);
+  transition: transform 0.9s var(--ease);
+  pointer-events: none;
+}
+.btn-primary:hover::after { transform: skewX(-12deg) translateX(120%); }
+.btn-primary.pulse { animation: cta-pulse 2.2s infinite; }
+@keyframes cta-pulse { 0% { box-shadow: 0 10px 36px rgba(185,0,0,0.09); transform: translateY(0);} 40% { box-shadow: 0 30px 70px rgba(185,0,0,0.22); transform: translateY(-5px);} 100% { box-shadow: 0 10px 36px rgba(185,0,0,0.09); transform: translateY(0);} }
+
+/* Reveal variants: stronger, artistic entrances */
+.reveal { will-change: transform, opacity, filter; }
+.reveal.in-view { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; filter: none; }
+.reveal.stagger-up { transform: translateY(28px) rotate(-2deg) scale(0.995); opacity: 0; }
+.reveal.stagger-up.in-view { transform: translateY(0) rotate(0deg) scale(1); transition: transform 0.9s var(--spring), opacity 0.7s ease, filter 0.6s ease; }
+
+/* Rationale card stronger hover with accent glow */
+.rationale-card:hover { box-shadow: 0 28px 72px -28px rgba(185,0,0,0.18), var(--shadow-md); transform: translateY(-10px) rotate(-0.6deg) scale(1.02); }
+.rationale-card::after { opacity: 1; }
+
+/* Filmstrip dramatic active state */
+.filmstrip-item.is-active { transform: translateY(-12px) scale(1.08) rotate(-1deg); box-shadow: 0 40px 80px -32px rgba(185,0,0,0.55); }
+
+/* Hotspot pulse intensified */
+.hotspot::before { animation-duration: 2s; opacity: 0.8; }
+
+/* Compare handle visible and animated */
+.compare-handle { pointer-events: none; }
+.compare-handle-grip { transition: transform 0.28s var(--ease); }
+.compare-range:active ~ .compare-handle .compare-handle-grip, .compare-range:focus ~ .compare-handle .compare-handle-grip { transform: scale(1.06); }
+
+/* Typographic tuning for headings */
+h1, h2, h3 { letter-spacing: -0.02em; }
+.section-head h2 { text-shadow: 0 8px 32px rgba(17,17,17,0.04); }
+
+/* Accent decorative stroke for headings */
+.hero-title::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 100%; transform: translateX(-50%);
+  width: 80px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+  margin-top: 18px; box-shadow: 0 10px 30px rgba(185,0,0,0.08);
+}
