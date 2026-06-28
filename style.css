@@ -494,22 +494,54 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
 
 /* ============================== GESTALT THEORY ============================== */
 .gestalt { padding: var(--section-pad) 0; background: var(--bg-alt); }
-.gestalt-applications { margin-top: clamp(56px, 7vw, 96px); max-width: 900px; }
-.gestalt-applications h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
-.gestalt-applications-intro { color: var(--ink-muted); line-height: 1.7; max-width: 640px; margin-bottom: 32px; }
-.gestalt-application-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.gestalt-application {
+
+.gestalt-figure { max-width: 380px; margin: 0 auto 40px; text-align: center; }
+.gestalt-figure-frame {
+  position: relative;
+  aspect-ratio: 394 / 205;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  cursor: zoom-in;
+}
+.gestalt-figure-caption { margin-top: 12px; font-size: 0.8rem; line-height: 1.5; color: var(--ink-faint); }
+
+.gestalt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+.gestalt-card {
+  position: relative;
+  overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  padding: 26px 28px;
+  padding: 22px 22px 20px;
   box-shadow: var(--shadow-sm);
+  transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease);
 }
-.gestalt-application h4 { font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
-.gestalt-application p { color: var(--ink-muted); line-height: 1.65; font-size: 0.94rem; }
+.gestalt-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.gestalt-card-index {
+  position: absolute;
+  top: 14px; right: 18px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: rgba(17, 17, 17, 0.07);
+  line-height: 1;
+}
+.gestalt-card-icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.gestalt-card-icon svg { width: 20px; height: 20px; }
+.gestalt-card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; }
+.gestalt-card p { color: var(--ink-muted); line-height: 1.6; font-size: 0.89rem; }
 
-@media (max-width: 900px) {
-  .gestalt-application-grid { grid-template-columns: 1fr; }
+@media (max-width: 480px) {
+  .gestalt-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Lightbox expand hint (rationale + process images) ---------- */
