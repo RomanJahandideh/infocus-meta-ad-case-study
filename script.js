@@ -129,6 +129,7 @@
 
     var ZOOM = 2.4;
     var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var isCoarse = window.matchMedia("(pointer: coarse)").matches;
     var rect = null;
     var target = { x: 0, y: 0 };
     var current = { x: 0, y: 0 };
@@ -176,7 +177,8 @@
 
     function stop() { active = false; if (rafId) cancelAnimationFrame(rafId); lens.classList.remove("is-active"); frame.classList.remove("zoom-engaged"); }
 
-    if (canHover) {
+    // Disable hover zoom on coarse (touch) pointers — use touch-hold handled below
+    if (canHover && !isCoarse) {
       frame.addEventListener("mouseenter", function (e) { start(e.clientX, e.clientY); });
       frame.addEventListener("mousemove", function (e) { setPoint(e.clientX, e.clientY); });
       frame.addEventListener("mouseleave", stop);
@@ -189,6 +191,26 @@
     }
 
     window.addEventListener("resize", function () { if (active) updateRect(); });
+  })();
+
+  /* ---------------------------------------------------------------------
+     Improve compare slider touch dragging (pointer events fallback)
+  --------------------------------------------------------------------- */
+  (function setupCompareTouch() {
+    var range = document.getElementById("compareRange");
+    var compareFrame = document.getElementById("compareFrame");
+    if (!range || !compareFrame) return;
+    // Pointer-based dragging for devices that support pointer events
+    var dragging = false;
+    compareFrame.addEventListener('pointerdown', function (e) { dragging = true; range.focus(); updateFromPointer(e); e.preventDefault(); });
+    window.addEventListener('pointermove', function (e) { if (!dragging) return; updateFromPointer(e); });
+    window.addEventListener('pointerup', function () { dragging = false; });
+    function updateFromPointer(e) {
+      var r = compareFrame.getBoundingClientRect();
+      var pct = clampNum((e.clientX - r.left) / r.width, 0, 1) * 100;
+      range.value = String(Math.round(pct));
+      compareFrame.style.setProperty('--pos', range.value + '%');
+    }
   })();
 
   /* ---------------------------------------------------------------------
@@ -440,4 +462,18 @@
   --------------------------------------------------------------------- */
   var footerYear = document.getElementById("footerYear");
   if (footerYear) footerYear.textContent = new Date().getFullYear();
+  
+  /* ---------------------------------------------------------------------
+     Rationale: sync numbering from `data-number` attributes
+  --------------------------------------------------------------------- */
+  (function syncRationaleNumbers() {
+    var cards = document.querySelectorAll('.rationale-card');
+    cards.forEach(function (card) {
+      var num = card.dataset.number;
+      if (num) {
+        var idx = card.querySelector('.rationale-index');
+        if (idx) idx.textContent = num;
+      }
+    });
+  })();
 })();

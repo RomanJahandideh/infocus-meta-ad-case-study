@@ -37,6 +37,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Inter+Tight:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23e63946'/%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -48,7 +49,9 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="#hero" class="brand" aria-label="InFocus case study, back to top">
-      <span class="brand-mark" aria-hidden="true"></span>
+      <svg class="brand-mark" aria-hidden="true" viewBox="0 0 16 16" role="img" focusable="false">
+        <circle cx="8" cy="8" r="6" />
+      </svg>
       <span class="brand-text">InFocus <em>Case&nbsp;Study</em></span>
     </a>
 
@@ -77,7 +80,6 @@
     <div class="container hero-inner">
 
       <div class="hero-content reveal">
-        <p class="eyebrow">Design Case Study, Take Home Challenge</p>
         <h1 class="hero-title">InFocus Film School<span class="hero-title-rule" aria-hidden="true"></span>Graphic + Digital Design Meta Ad</h1>
         <p class="hero-subtitle">A scroll stopping ad concept built around film, design tools, and the idea of building a creative future.</p>
         <p class="hero-intro">The final concept combines a LEGO built film reel and incomplete pencil to represent the process of learning, making, assembling, and refining creative skills. Transparent reel compartments reveal design tools inside, turning the ad into a visual metaphor for hands on creative education.</p>
@@ -147,11 +149,12 @@
           <span class="media-expand-hint" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4a1 1 0 0 0-1 1v5M15 3h5a1 1 0 0 1 1 1v5M9 21H4a1 1 0 0 1-1-1v-5M15 21h5a1 1 0 0 0 1-1v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
+          <!-- rationale overlay removed (interactive preview disabled) -->
         </div>
 
         <div class="rationale-cards">
 
-          <article class="rationale-card reveal" style="--delay:0ms">
+          <article class="rationale-card reveal" style="--delay:0ms" data-target="spot-01" data-number="01">
             <span class="rationale-index">01</span>
             <span class="rationale-icon" aria-hidden="true">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="22" r="4" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="9.5" r="2.6" stroke="currentColor" stroke-width="2"/><circle cx="32.5" cy="28" r="2.6" stroke="currentColor" stroke-width="2"/><circle cx="11.5" cy="28" r="2.6" stroke="currentColor" stroke-width="2"/></svg>
@@ -160,7 +163,7 @@
             <p>The film reel anchors the concept in InFocus Film School's identity, connecting the ad directly to storytelling, production, and visual culture.</p>
           </article>
 
-          <article class="rationale-card reveal" style="--delay:60ms">
+          <article class="rationale-card reveal" style="--delay:60ms" data-target="spot-02" data-number="02">
             <span class="rationale-index">02</span>
             <span class="rationale-icon" aria-hidden="true">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="23" width="30" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="12" y="13" width="20" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="10" r="1.6" fill="currentColor"/><circle cx="22" cy="10" r="1.6" fill="currentColor"/><circle cx="27.5" cy="10" r="1.6" fill="currentColor"/></svg>
@@ -169,7 +172,7 @@
             <p>The LEGO inspired structure represents the way creative skills are assembled through practice, experimentation, and craft.</p>
           </article>
 
-          <article class="rationale-card reveal" style="--delay:120ms">
+          <article class="rationale-card reveal" style="--delay:120ms" data-target="spot-03" data-number="03">
             <span class="rationale-index">03</span>
             <span class="rationale-icon" aria-hidden="true">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="7" width="30" height="30" rx="3" stroke="currentColor" stroke-width="2"/><line x1="22" y1="7" x2="22" y2="37" stroke="currentColor" stroke-width="2"/><line x1="7" y1="22" x2="37" y2="22" stroke="currentColor" stroke-width="2"/></svg>
@@ -178,7 +181,7 @@
             <p>Transparent compartments reveal pencils, markers, rulers, swatches, and design tools, suggesting that the program is hands on and process driven.</p>
           </article>
 
-          <article class="rationale-card reveal" style="--delay:0ms">
+          <article class="rationale-card reveal" style="--delay:0ms" data-target="spot-04" data-number="04">
             <span class="rationale-index">04</span>
             <span class="rationale-icon" aria-hidden="true">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 36 L25 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M25 19 L30.5 13.5 L36 19 L30.5 24.5 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30.5 24.5 L37 31" stroke="currentColor" stroke-width="2" stroke-dasharray="1.5 3.5" stroke-linecap="round"/></svg>
@@ -187,7 +190,7 @@
             <p>The unfinished pencil shows that design is not instant polish. It is built, revised, tested, and improved.</p>
           </article>
 
-          <article class="rationale-card reveal" style="--delay:60ms">
+          <article class="rationale-card reveal" style="--delay:60ms" data-target="spot-05" data-number="05">
             <span class="rationale-index">05</span>
             <span class="rationale-icon" aria-hidden="true">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="25" width="8" height="8" rx="1.2" stroke="currentColor" stroke-width="2" transform="rotate(-14 10 29)"/><rect x="19" y="9" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="2" transform="rotate(20 22.5 12.5)"/><rect x="28" y="26" width="9" height="9" rx="1.2" stroke="currentColor" stroke-width="2" transform="rotate(10 32.5 30.5)"/></svg>
@@ -196,7 +199,7 @@
             <p>Loose parts on the ground reinforce the idea of exploration, trial, error, and creative freedom.</p>
           </article>
 
-          <article class="rationale-card reveal" style="--delay:120ms">
+          <article class="rationale-card reveal" style="--delay:120ms" data-target="spot-06" data-number="06">
             <span class="rationale-index">06</span>
             <span class="rationale-icon" aria-hidden="true">
               <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="15" width="32" height="14" rx="7" stroke="currentColor" stroke-width="2"/><path d="M18 22 L27 22 M24 18 L27.5 22 L24 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -214,15 +217,62 @@
   <section class="process" id="process">
     <div class="container">
       <header class="section-head reveal">
-        <p class="eyebrow">03 Design Process</p>
         <h2>Twenty two artifacts, one idea</h2>
         <p class="section-intro">A process wall that behaves like a creative case study: scan the contact sheet, jump between experiments, and watch the idea tighten from rough object tests into the final ad.</p>
       </header>
 
+      <div class="process-preview reveal" aria-label="Process idea snapshot">
+        <div class="preview-header">
+          <p class="eyebrow">Idea snapshot</p>
+          <h3>Three refined explorations that explain the concept</h3>
+          <p class="preview-intro">The visuals are shorthand for three core philosophies: LEGO for active construction, pencil for craft and iteration, and film roll for cinematic storytelling. This idea uses Gestalt theory — especially closure — so the viewer completes the story mentally.</p>
+        </div>
+
+        <div class="preview-grid">
+          <div class="preview-set preview-set--lego">
+            <div class="preview-copy">
+              <h4>LEGO is philosophy</h4>
+              <p>LEGO represents structure and active assembly. The ad is meant to feel like a built system, where each piece points to a larger whole and the mind fills in the missing connections.</p>
+            </div>
+            <div class="preview-thumbs">
+              <div class="preview-thumb" data-media-frame>
+                <img src="assets/lego-01.jpg" alt="LEGO idea study" data-fallback-label="assets/lego-01.jpg">
+                <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-icon">▦</span><span class="media-placeholder-text">Add lego-01.jpg to /assets</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-set preview-set--pencil">
+            <div class="preview-copy">
+              <h4>Pencil is process</h4>
+              <p>The pencil represents the practice of sketching, refining, and making decisions by hand. It is a reminder that good design arrives through iteration, not by accident.</p>
+            </div>
+            <div class="preview-thumbs">
+              <div class="preview-thumb" data-media-frame>
+                <img src="assets/pencil-01.jpg" alt="Pencil idea study" data-fallback-label="assets/pencil-01.jpg">
+                <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-icon">▦</span><span class="media-placeholder-text">Add pencil-01.jpg to /assets</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-set preview-set--film">
+            <div class="preview-copy">
+              <h4>Film roll is story</h4>
+              <p>The film roll brings narrative and motion into the concept. It underlines that the final ad is a story frame, informed by cinematic thinking and visual rhythm.</p>
+            </div>
+            <div class="preview-thumbs">
+              <div class="preview-thumb" data-media-frame>
+                <img src="assets/film-roll-01.jpg" alt="Film roll idea study" data-fallback-label="assets/film-roll-01.jpg">
+                <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-icon">▦</span><span class="media-placeholder-text">Add film-roll-01.jpg to /assets</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="process-stage reveal" id="processStage">
 
         <div class="process-frame">
-          <span class="process-frame-number" id="processBigNumber" aria-hidden="true">01</span>
           <div class="process-sprockets" aria-hidden="true"></div>
           <div class="process-image-wrap" data-media-frame data-lightbox-trigger>
             <img src="" alt="" id="processImage" class="process-image">
@@ -238,6 +288,7 @@
         </div>
 
         <div class="process-info">
+          <span class="process-frame-number" id="processBigNumber" aria-hidden="true">01</span>
           <div class="process-stage-row">
             <p class="process-stage-label" id="processStageLabel">Artifact 01 / 22</p>
             <span class="process-stage-tag" id="processStageTag">Exploration</span>
