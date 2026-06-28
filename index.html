@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  ============================================================================
+  InFocus Film School — Graphic + Digital Design Meta Ad — Case Study Site
+  ============================================================================
+  HOW TO ADD YOUR IMAGES
+  ----------------------------------------------------------------------------
+  Drop your real files into the /assets folder using these EXACT names and
+  every placeholder on the site will resolve automatically — no code edits
+  needed:
+
+    assets/final-ad.png       → the final 1080×1350 Meta ad (hero, before/after
+                                 "after" image, and the hotspot breakdown image)
+    assets/rationale.png      → an annotated/overview image for the
+                                 Design Rationale section
+    assets/process-01.jpg     → Step 01, Concept A — The Film Canister
+    assets/process-02.jpg     → Step 02, Concept B — The Reel, Alone (also used
+                                 as the "before" image in the Before/After slider)
+    assets/process-03.jpg     → Step 03, Building the Supporting Layout
+    assets/process-04.jpg     → Step 04, Layout Alternate — Two Columns
+    assets/process-05.jpg     → Step 05, Pencil Joins the Reel
+    assets/process-06.jpg     → Step 06, Benefits Row, Square Format
+    assets/process-07.jpg     → Step 07, Border & Copy Lock
+    assets/process-08.jpg     → Step 08, Square Format, Final Copy
+    assets/process-09.jpg     → Step 09, Material Alternate — Tested & Rejected
+    assets/process-10.jpg     → Step 10, Final Direction
+
+  Until a real file is in place, that slot shows a clean placeholder card
+  telling you exactly which filename it is waiting for — nothing ever breaks.
+
+  Process step copy (titles, descriptions, "what changed", "connects to
+  final") lives in script.js inside the PROCESS_STEPS array — edit the text
+  there. Hotspot copy for the Final Ad Breakdown lives in the HOTSPOTS array
+  in the same file.
+
+  The "Source File" link in the hero has a TODO marker below — replace it
+  with your real Figma/Drive/source link.
+  ============================================================================
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InFocus Film School — Graphic + Digital Design Meta Ad | Case Study by Roman Jahandideh</title>
+<meta name="description" content="An interactive design case study for a take-home Meta ad challenge for InFocus Film School's Graphic + Digital Design program, by Roman Jahandideh.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Inter+Tight:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================== HEADER / NAV ============================== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#hero" class="brand" aria-label="InFocus case study, back to top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">InFocus <em>Case&nbsp;Study</em></span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <ul>
+        <li><a href="#hero" class="nav-link" data-nav>Home</a></li>
+        <li><a href="#rationale" class="nav-link" data-nav>Rationale</a></li>
+        <li><a href="#process" class="nav-link" data-nav>Process</a></li>
+        <li><a href="#breakdown" class="nav-link" data-nav>Breakdown</a></li>
+        <li><a href="#about" class="nav-link" data-nav>About</a></li>
+        <li><a href="#contact" class="nav-link" data-nav>Contact</a></li>
+      </ul>
+    </nav>
+
+    <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================== 1. HERO ============================== -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+
+      <div class="hero-content reveal">
+        <p class="eyebrow">Design Case Study — Take-Home Challenge</p>
+        <h1 class="hero-title">InFocus Film School<span class="hero-title-rule" aria-hidden="true"></span>Graphic + Digital Design Meta Ad</h1>
+        <p class="hero-subtitle">A scroll-stopping ad concept built around film, design tools, and the idea of building a creative future.</p>
+        <p class="hero-intro">The final concept combines a LEGO-built film reel and incomplete pencil to represent the process of learning, making, assembling, and refining creative skills. Transparent reel compartments reveal design tools inside, turning the ad into a visual metaphor for hands-on creative education.</p>
+
+        <dl class="hero-meta">
+          <div><dt>Client</dt><dd>InFocus Film School</dd></div>
+          <div><dt>Program</dt><dd>Graphic + Digital Design</dd></div>
+          <div><dt>Format</dt><dd>1080 × 1350 px Static Ad</dd></div>
+          <div><dt>Platform</dt><dd>Meta — Feed &amp; Story</dd></div>
+        </dl>
+
+        <div class="hero-deliverables" role="list" aria-label="Submission deliverables">
+          <a class="deliverable" href="assets/final-ad.png" download role="listitem">
+            <span class="deliverable-label">Final Ad</span>
+            <span class="deliverable-action">Download <span aria-hidden="true">↓</span></span>
+          </a>
+          <!-- TODO: replace href="#" with your real source-file link (Figma / Drive / etc.) -->
+          <a class="deliverable" href="#" role="listitem">
+            <span class="deliverable-label">Source File</span>
+            <span class="deliverable-action">Open <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="deliverable" href="#rationale" role="listitem">
+            <span class="deliverable-label">Rationale</span>
+            <span class="deliverable-action">Read <span aria-hidden="true">↓</span></span>
+          </a>
+        </div>
+      </div>
+
+      <figure class="hero-visual reveal" style="--delay:140ms">
+        <div class="zoom-frame" id="zoomFrame" data-media-frame>
+          <img src="assets/final-ad.png" alt="Final InFocus Film School Meta ad featuring a LEGO-built film reel with glass compartments and an incomplete pencil" id="finalAdImage" class="zoom-source" data-fallback-label="assets/final-ad.png">
+          <div class="media-placeholder" aria-hidden="true">
+            <span class="media-placeholder-icon">▦</span>
+            <span class="media-placeholder-text">Add final-ad.png to /assets</span>
+          </div>
+          <div class="zoom-lens" id="zoomLens" aria-hidden="true"></div>
+        </div>
+        <figcaption class="hero-caption">
+          <span class="frame-spec">1080 × 1350 — Final Meta Ad</span>
+          <span class="zoom-hint zoom-hint--desktop">Move the cursor over the ad to inspect details</span>
+          <span class="zoom-hint zoom-hint--touch">Tap and hold to inspect details</span>
+        </figcaption>
+      </figure>
+
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+  </section>
+
+  <!-- ============================== 2. RATIONALE ============================== -->
+  <section class="rationale" id="rationale">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">02 — Design Rationale</p>
+        <h2>Every element earns its place</h2>
+        <p class="section-intro">Six deliberate decisions turn a single static image into a complete argument for the program.</p>
+      </header>
+
+      <div class="rationale-layout">
+
+        <div class="rationale-visual reveal" data-media-frame>
+          <img src="assets/rationale.png" alt="Annotated overview of the final ad highlighting key design decisions" class="rationale-image" data-fallback-label="assets/rationale.png">
+          <div class="media-placeholder" aria-hidden="true">
+            <span class="media-placeholder-icon">▦</span>
+            <span class="media-placeholder-text">Add rationale.png to /assets</span>
+          </div>
+        </div>
+
+        <div class="rationale-cards">
+
+          <article class="rationale-card reveal" style="--delay:0ms">
+            <span class="rationale-index">01</span>
+            <span class="rationale-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="22" r="4" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="9.5" r="2.6" stroke="currentColor" stroke-width="2"/><circle cx="32.5" cy="28" r="2.6" stroke="currentColor" stroke-width="2"/><circle cx="11.5" cy="28" r="2.6" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <h3>Film Reel</h3>
+            <p>The film reel anchors the concept in InFocus Film School's identity, connecting the ad directly to storytelling, production, and visual culture.</p>
+          </article>
+
+          <article class="rationale-card reveal" style="--delay:60ms">
+            <span class="rationale-index">02</span>
+            <span class="rationale-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="23" width="30" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="12" y="13" width="20" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="10" r="1.6" fill="currentColor"/><circle cx="22" cy="10" r="1.6" fill="currentColor"/><circle cx="27.5" cy="10" r="1.6" fill="currentColor"/></svg>
+            </span>
+            <h3>Built Piece by Piece</h3>
+            <p>The LEGO-inspired structure represents the way creative skills are assembled through practice, experimentation, and craft.</p>
+          </article>
+
+          <article class="rationale-card reveal" style="--delay:120ms">
+            <span class="rationale-index">03</span>
+            <span class="rationale-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="7" width="30" height="30" rx="3" stroke="currentColor" stroke-width="2"/><line x1="22" y1="7" x2="22" y2="37" stroke="currentColor" stroke-width="2"/><line x1="7" y1="22" x2="37" y2="22" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <h3>Creative Tools Inside</h3>
+            <p>Transparent compartments reveal pencils, markers, rulers, swatches, and design tools, suggesting that the program is hands-on and process-driven.</p>
+          </article>
+
+          <article class="rationale-card reveal" style="--delay:0ms">
+            <span class="rationale-index">04</span>
+            <span class="rationale-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 36 L25 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M25 19 L30.5 13.5 L36 19 L30.5 24.5 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30.5 24.5 L37 31" stroke="currentColor" stroke-width="2" stroke-dasharray="1.5 3.5" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Learning in Progress</h3>
+            <p>The unfinished pencil shows that design is not instant polish. It is built, revised, tested, and improved.</p>
+          </article>
+
+          <article class="rationale-card reveal" style="--delay:60ms">
+            <span class="rationale-index">05</span>
+            <span class="rationale-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="25" width="8" height="8" rx="1.2" stroke="currentColor" stroke-width="2" transform="rotate(-14 10 29)"/><rect x="19" y="9" width="7" height="7" rx="1.2" stroke="currentColor" stroke-width="2" transform="rotate(20 22.5 12.5)"/><rect x="28" y="26" width="9" height="9" rx="1.2" stroke="currentColor" stroke-width="2" transform="rotate(10 32.5 30.5)"/></svg>
+            </span>
+            <h3>Creative Experimentation</h3>
+            <p>Loose parts on the ground reinforce the idea of exploration, trial, error, and creative freedom.</p>
+          </article>
+
+          <article class="rationale-card reveal" style="--delay:120ms">
+            <span class="rationale-index">06</span>
+            <span class="rationale-icon" aria-hidden="true">
+              <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="15" width="32" height="14" rx="7" stroke="currentColor" stroke-width="2"/><path d="M18 22 L27 22 M24 18 L27.5 22 L24 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Clear Action</h3>
+            <p>The red Apply Now button creates urgency and directs attention toward the next step.</p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 3. PROCESS ============================== -->
+  <section class="process" id="process">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">03 — Design Process</p>
+        <h2>Ten stages, one idea</h2>
+        <p class="section-intro">An interactive look at how the concept moved from a written brief to a fully built object. Scrub the reel, click a frame, or use the arrow keys.</p>
+      </header>
+
+      <div class="process-stage reveal" id="processStage">
+
+        <div class="process-frame">
+          <span class="process-frame-number" id="processBigNumber" aria-hidden="true">01</span>
+          <div class="process-sprockets" aria-hidden="true"></div>
+          <div class="process-image-wrap" data-media-frame>
+            <img src="" alt="" id="processImage" class="process-image">
+            <div class="media-placeholder media-placeholder--light" aria-hidden="true">
+              <span class="media-placeholder-icon">▦</span>
+              <span class="media-placeholder-text" id="processPlaceholderText">Add process-01.jpg to /assets</span>
+            </div>
+          </div>
+          <div class="process-sprockets" aria-hidden="true"></div>
+        </div>
+
+        <div class="process-info">
+          <p class="process-stage-label" id="processStageLabel">Stage 01 / 10</p>
+          <h3 class="process-title" id="processTitle">Concept A — The Film Canister</h3>
+          <p class="process-desc" id="processDesc"></p>
+
+          <div class="process-detail-grid">
+            <div>
+              <h4>What changed</h4>
+              <p id="processChanged"></p>
+            </div>
+            <div>
+              <h4>Connects to final</h4>
+              <p id="processConnects"></p>
+            </div>
+          </div>
+
+          <div class="process-controls">
+            <button type="button" class="process-btn" id="processPrev" aria-label="Previous stage">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 L5 8 L10 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Previous</span>
+            </button>
+            <span class="process-counter" aria-live="polite"><span id="processCounterCurrent">01</span> / <span id="processCounterTotal">10</span></span>
+            <button type="button" class="process-btn" id="processNext" aria-label="Next stage">
+              <span>Next</span>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3 L11 8 L6 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-progress" id="processProgress" aria-hidden="true">
+        <div class="process-progress-fill" id="processProgressFill"></div>
+      </div>
+
+      <div class="filmstrip" role="tablist" aria-label="Jump to a design process stage" id="filmstripTrack"></div>
+    </div>
+  </section>
+
+  <!-- ============================== 4. BEFORE / AFTER ============================== -->
+  <section class="comparison" id="comparison">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">04 — Before / After Concept Shift</p>
+        <h2>Before / After Concept Shift</h2>
+        <p class="section-intro">Early explorations tested multiple visual languages. The final direction became stronger when the concept moved away from decorative styling and toward a single metaphor: building a creative future through design tools, film culture, and hands-on making.</p>
+      </header>
+
+      <div class="compare reveal" id="compareWidget">
+        <div class="compare-frame" id="compareFrame">
+
+          <div class="compare-layer compare-layer--after" data-media-frame>
+            <img src="assets/final-ad.png" alt="Final design direction" class="compare-img" data-fallback-label="assets/final-ad.png">
+            <div class="media-placeholder" aria-hidden="true">
+              <span class="media-placeholder-icon">▦</span>
+              <span class="media-placeholder-text">Add final-ad.png to /assets</span>
+            </div>
+          </div>
+
+          <div class="compare-layer compare-layer--before" id="compareBeforeWrap" data-media-frame>
+            <img src="assets/process-02.jpg" alt="Early design direction" class="compare-img" data-fallback-label="assets/process-02.jpg">
+            <div class="media-placeholder" aria-hidden="true">
+              <span class="media-placeholder-icon">▦</span>
+              <span class="media-placeholder-text">Add process-02.jpg to /assets</span>
+            </div>
+          </div>
+
+          <div class="compare-handle" id="compareHandle" aria-hidden="true">
+            <span class="compare-handle-grip">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 6 L4 12 L9 18 M15 6 L20 12 L15 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+
+          <span class="compare-tag compare-tag--before" aria-hidden="true">Early Direction</span>
+          <span class="compare-tag compare-tag--after" aria-hidden="true">Final Design</span>
+        </div>
+
+        <input type="range" min="0" max="100" value="50" class="compare-range" id="compareRange" aria-label="Drag to compare the early design direction with the final design">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 5. BREAKDOWN ============================== -->
+  <section class="breakdown" id="breakdown">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">05 — Final Ad Breakdown</p>
+        <h2>Anatomy of the ad</h2>
+        <p class="section-intro">Twelve deliberate decisions, mapped directly onto the final layout. Select a marker to see the thinking behind it.</p>
+      </header>
+
+      <div class="breakdown-stage reveal">
+        <div class="breakdown-frame" id="breakdownFrame" data-media-frame>
+          <img src="assets/final-ad.png" alt="Final ad with numbered breakdown markers" class="breakdown-image" data-fallback-label="assets/final-ad.png">
+          <div class="media-placeholder" aria-hidden="true">
+            <span class="media-placeholder-icon">▦</span>
+            <span class="media-placeholder-text">Add final-ad.png to /assets</span>
+          </div>
+          <div class="hotspot-layer" id="hotspotLayer"></div>
+        </div>
+        <p class="breakdown-hint">Tip: click any numbered marker on the ad to read the reasoning behind it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 6. ABOUT ============================== -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-content reveal">
+        <p class="eyebrow">06 — About the Designer</p>
+        <h2>About the Designer</h2>
+        <p>Roman Jahandideh is a graphic designer and visual storyteller based in Vancouver, combining brand design, motion, 3D visualization, and interactive media. His work focuses on visual hierarchy, concept-driven communication, and building memorable digital and print assets.</p>
+
+        <ul class="skills-list" aria-label="Skills">
+          <li>Graphic Design</li>
+          <li>Typography</li>
+          <li>Brand Systems</li>
+          <li>3D Visualization</li>
+          <li>Motion Design</li>
+          <li>Interactive Media</li>
+          <li>AI-Assisted Creative Direction</li>
+          <li>Adobe Creative Suite</li>
+          <li>Figma</li>
+          <li>HTML / CSS / JavaScript</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 7. CONTACT ============================== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">07 — Contact</p>
+        <h2>Let's talk about the next project</h2>
+      </header>
+
+      <div class="contact-grid">
+        <dl class="contact-details reveal">
+          <div><dt>Name</dt><dd>Roman Jahandideh</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:jahandidehroman@gmail.com">jahandidehroman@gmail.com</a></dd></div>
+          <div><dt>Website</dt><dd><a href="https://romanjahandideh.com" target="_blank" rel="noopener">romanjahandideh.com</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/roman-jahandideh-38b207351" target="_blank" rel="noopener">linkedin.com/in/roman-jahandideh-38b207351</a></dd></div>
+          <div><dt>Location</dt><dd>Vancouver, BC</dd></div>
+        </dl>
+
+        <div class="contact-actions reveal" style="--delay:120ms">
+          <a class="btn btn-primary" href="https://romanjahandideh.com" target="_blank" rel="noopener">View Portfolio</a>
+          <a class="btn btn-ghost" href="mailto:jahandidehroman@gmail.com">Email Roman</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="footerYear"></span> Roman Jahandideh. Case study built for the InFocus Film School take-home challenge.</p>
+    <a href="#hero" class="footer-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
