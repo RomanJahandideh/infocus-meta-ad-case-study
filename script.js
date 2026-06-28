@@ -10,6 +10,10 @@
 (function () {
   "use strict";
 
+  if (window.history && "scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function clampNum(value, min, max) {
@@ -295,6 +299,7 @@
     var bigNumber = document.getElementById("processBigNumber");
     var placeholderText = document.getElementById("processPlaceholderText");
     var stageLabel = document.getElementById("processStageLabel");
+    var stageTag = document.getElementById("processStageTag");
     var titleEl = document.getElementById("processTitle");
     var descEl = document.getElementById("processDesc");
     var changedEl = document.getElementById("processChanged");
@@ -355,6 +360,9 @@
       var n = pad(currentStep + 1);
 
       stageLabel.textContent = "Stage " + n + " / " + pad(total);
+      var isFinal = currentStep === total - 1;
+      stageTag.textContent = isFinal ? "Final Direction" : "Exploration";
+      stageTag.classList.toggle("is-final", isFinal);
       bigNumber.textContent = n;
       counterCurrent.textContent = n;
       titleEl.textContent = step.title;
@@ -389,8 +397,10 @@
         el.setAttribute("aria-selected", isActive ? "true" : "false");
       });
       var activeThumb = thumbs[currentStep];
-      if (activeThumb && activeThumb.scrollIntoView) {
-        activeThumb.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
+      if (activeThumb) {
+        var target = activeThumb.offsetLeft - (filmstrip.clientWidth - activeThumb.clientWidth) / 2;
+        target = clampNum(target, 0, filmstrip.scrollWidth - filmstrip.clientWidth);
+        filmstrip.scrollTo({ left: target, behavior: prefersReducedMotion ? "auto" : "smooth" });
       }
     }
 
