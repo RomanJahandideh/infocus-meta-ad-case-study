@@ -229,6 +229,26 @@
   })();
 
   /* ---------------------------------------------------------------------
+     3D tilt on hover, the same "separate plate" feel as the process
+     stage card, shared across every major panel and card on the site
+  --------------------------------------------------------------------- */
+  (function setupTilt() {
+    var targets = document.querySelectorAll(
+      "#zoomFrame, .gestalt-figure-frame, .gestalt-card, .rationale-visual, .rationale-card, .compare-frame, .breakdown-frame-wrap, .download-card"
+    );
+    targets.forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        if (e.buttons) return; // don't fight an active drag or click on the element
+        var rect = el.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        el.style.transform = "perspective(1200px) rotateX(" + (-y * 2.2).toFixed(2) + "deg) rotateY(" + (x * 2.6).toFixed(2) + "deg)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+  })();
+
+  /* ---------------------------------------------------------------------
      Design Process, interactive filmstrip timeline
   --------------------------------------------------------------------- */
   var PROCESS_STEPS = [

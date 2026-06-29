@@ -336,6 +336,7 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   box-shadow: 0 34px 90px -30px rgba(17, 17, 17, 0.48), 0 1px 0 rgba(255, 255, 255, 0.9) inset;
   background: var(--surface);
   isolation: isolate;
+  transition: transform 0.28s var(--ease);
 }
 .zoom-source { width: 100%; height: 100%; object-fit: cover; }
 .zoom-frame.zoom-engaged, .zoom-frame.zoom-engaged .zoom-source { cursor: none; }
@@ -437,6 +438,7 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
   cursor: zoom-in;
+  transition: transform 0.28s var(--ease);
 }
 /* rationale interactive overlay removed per user request */
 .rationale-visual img.rationale-image { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -449,7 +451,7 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   border-radius: var(--radius-md);
   padding: 34px 36px 32px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.45s var(--spring), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+  transition: transform 0.28s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 .rationale-card::after {
   content: "";
@@ -462,7 +464,7 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   transform-origin: left;
   transition: opacity 0.3s ease, transform 0.45s var(--spring);
 }
-.rationale-card:hover { transform: translateY(-7px) scale(1.012); box-shadow: var(--shadow-md); border-color: rgba(185, 0, 0, 0.22); }
+.rationale-card:hover { box-shadow: var(--shadow-md); border-color: rgba(185, 0, 0, 0.22); }
 .rationale-card:hover::after { opacity: 1; transform: scaleX(1); }
 .rationale-index {
   position: absolute;
@@ -522,7 +524,7 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
-  cursor: zoom-in;
+  transition: transform 0.28s var(--ease);
 }
 .gestalt-figure-caption { margin-top: 12px; font-size: 0.8rem; line-height: 1.5; color: var(--ink-faint); }
 
@@ -535,9 +537,9 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
   border-radius: var(--radius-md);
   padding: 22px 22px 20px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.4s var(--spring), box-shadow 0.4s var(--ease);
+  transition: transform 0.28s var(--ease), box-shadow 0.4s var(--ease);
 }
-.gestalt-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.gestalt-card:hover { box-shadow: var(--shadow-md); }
 .gestalt-card-index {
   position: absolute;
   top: 14px; right: 18px;
@@ -1008,6 +1010,7 @@ body.lightbox-open { overflow: hidden; }
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
+  transition: transform 0.28s var(--ease);
 }
 .compare-layer { position: absolute; inset: 0; }
 .compare-layer--before { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); will-change: clip-path; background: var(--surface); }
@@ -1089,6 +1092,7 @@ body.lightbox-open { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   gap: 22px;
+  transition: transform 0.28s var(--ease);
 }
 .breakdown-frame {
   position: relative;
@@ -1252,9 +1256,9 @@ body.lightbox-open { overflow: hidden; }
   flex-direction: column;
   gap: 16px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.45s var(--spring), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+  transition: transform 0.28s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
-.download-card:hover { transform: translateY(-7px) scale(1.012); box-shadow: var(--shadow-md); border-color: rgba(185, 0, 0, 0.22); }
+.download-card:hover { box-shadow: var(--shadow-md); border-color: rgba(185, 0, 0, 0.22); }
 .download-icon {
   width: 54px; height: 54px;
   border-radius: 50%;
@@ -1388,7 +1392,7 @@ body.lightbox-open { overflow: hidden; }
 .reveal.stagger-up.in-view { transform: translateY(0) rotate(0deg) scale(1); transition: transform 0.9s var(--spring), opacity 0.7s ease, filter 0.6s ease; }
 
 /* Rationale card stronger hover with accent glow */
-.rationale-card:hover { box-shadow: 0 28px 72px -28px rgba(185,0,0,0.18), var(--shadow-md); transform: translateY(-10px) rotate(-0.6deg) scale(1.02); }
+.rationale-card:hover { box-shadow: 0 28px 72px -28px rgba(185,0,0,0.18), var(--shadow-md); }
 .rationale-card::after { opacity: 1; }
 
 /* Filmstrip dramatic active state */
