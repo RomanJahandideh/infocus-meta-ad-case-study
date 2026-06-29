@@ -65,7 +65,6 @@
         <li><a href="#process" class="nav-link" data-nav>Process</a></li>
         <li><a href="#breakdown" class="nav-link" data-nav>Breakdown</a></li>
         <li><a href="#downloads" class="nav-link" data-nav>Downloads</a></li>
-        <li><a href="#about" class="nav-link" data-nav>About</a></li>
         <li><a href="#contact" class="nav-link" data-nav>Contact</a></li>
       </ul>
     </nav>
@@ -114,7 +113,7 @@
 
       <figure class="hero-visual reveal" style="--delay:140ms">
         <div class="zoom-frame" id="zoomFrame" data-media-frame>
-          <img src="assets/final-ad.png" alt="Final InFocus Film School Meta ad featuring a LEGO built film reel with glass compartments and an incomplete pencil" id="finalAdImage" class="zoom-source" data-fallback-label="assets/final-ad.png">
+          <img src="assets/final-ad.png" alt="Final InFocus Film School Meta ad featuring a LEGO built film reel, a real film roll and strip, and a classic pencil" id="finalAdImage" class="zoom-source" data-fallback-label="assets/final-ad.png">
           <div class="media-placeholder" aria-hidden="true">
             <span class="media-placeholder-icon">▦</span>
             <span class="media-placeholder-text">Add final ad.png to /assets</span>
@@ -142,15 +141,12 @@
       </header>
 
       <figure class="gestalt-figure reveal">
-        <div class="gestalt-figure-frame" data-media-frame data-lightbox-trigger>
+        <div class="gestalt-figure-frame" data-media-frame>
           <img src="assets/gestalt.png" alt="Max Wertheimer, Wolfgang Köhler, and Kurt Koffka, the founders of Gestalt psychology" data-fallback-label="assets/gestalt.png">
           <div class="media-placeholder" aria-hidden="true">
             <span class="media-placeholder-icon">▦</span>
             <span class="media-placeholder-text">Add gestalt.png to /assets</span>
           </div>
-          <span class="media-expand-hint" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 3H4a1 1 0 0 0-1 1v5M15 3h5a1 1 0 0 1 1 1v5M9 21H4a1 1 0 0 1-1-1v-5M15 21h5a1 1 0 0 0 1-1v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
         </div>
         <figcaption class="gestalt-figure-caption">Max Wertheimer, Wolfgang Köhler, and Kurt Koffka, the psychologists who founded Gestalt theory in the early 1900s.</figcaption>
       </figure>
@@ -468,6 +464,11 @@
       </header>
 
       <div class="compare reveal" id="compareWidget">
+        <div class="compare-tags" aria-hidden="true">
+          <span class="compare-tag compare-tag--before">Initial Idea</span>
+          <span class="compare-tag compare-tag--after">Final Idea</span>
+        </div>
+
         <div class="compare-frame" id="compareFrame">
 
           <div class="compare-layer compare-layer--after" data-media-frame>
@@ -479,10 +480,10 @@
           </div>
 
           <div class="compare-layer compare-layer--before" id="compareBeforeWrap" data-media-frame>
-            <img src="assets/case-process-paper-01-tunnel.png" alt="The first paper cut concept: a torn paper tunnel opening onto Vancouver's skyline" class="compare-img" data-fallback-label="assets/case-process-paper-01-tunnel.png">
+            <img src="assets/case-process-paper-02-ribbon.png" alt="An early paper cut concept: a folded red ribbon unrolling like a road down Granville Street toward Creative Studios, under the line Fold your future in downtown Vancouver" class="compare-img" data-fallback-label="assets/case-process-paper-02-ribbon.png">
             <div class="media-placeholder" aria-hidden="true">
               <span class="media-placeholder-icon">▦</span>
-              <span class="media-placeholder-text">Add case process paper 01 tunnel.png to /assets</span>
+              <span class="media-placeholder-text">Add case process paper 02 ribbon.png to /assets</span>
             </div>
           </div>
 
@@ -491,9 +492,6 @@
               <svg viewBox="0 0 24 24" fill="none"><path d="M9 6 L4 12 L9 18 M15 6 L20 12 L15 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </div>
-
-          <span class="compare-tag compare-tag--before" aria-hidden="true">Original Idea</span>
-          <span class="compare-tag compare-tag--after" aria-hidden="true">Final Design</span>
         </div>
 
         <input type="range" min="0" max="100" value="50" class="compare-range" id="compareRange" aria-label="Drag to compare the early design direction with the final design">
@@ -507,29 +505,41 @@
       <header class="section-head reveal">
         <p class="eyebrow">06 Final Ad Breakdown</p>
         <h2>Anatomy of the ad</h2>
-        <p class="section-intro">Ten deliberate decisions, mapped directly onto the final layout. Select a marker to see the thinking behind it.</p>
+        <p class="section-intro">Ten deliberate decisions, mapped directly onto the final layout. Watch the tour, or select any marker yourself.</p>
       </header>
 
       <div class="breakdown-stage reveal">
         <div class="breakdown-layout">
-          <div class="breakdown-frame" id="breakdownFrame" data-media-frame>
-            <img src="assets/final-ad.png" alt="Final ad with numbered breakdown markers" class="breakdown-image" data-fallback-label="assets/final-ad.png">
-            <div class="media-placeholder" aria-hidden="true">
-              <span class="media-placeholder-icon">▦</span>
-              <span class="media-placeholder-text">Add final ad.png to /assets</span>
+          <div class="breakdown-frame-wrap">
+            <div class="breakdown-frame" id="breakdownFrame" data-media-frame>
+              <img src="assets/final-ad.png" alt="Final ad with numbered breakdown markers" class="breakdown-image" data-fallback-label="assets/final-ad.png">
+              <div class="media-placeholder" aria-hidden="true">
+                <span class="media-placeholder-icon">▦</span>
+                <span class="media-placeholder-text">Add final ad.png to /assets</span>
+              </div>
+              <div class="hotspot-layer" id="hotspotLayer"></div>
             </div>
-            <div class="hotspot-layer" id="hotspotLayer"></div>
+
+            <aside class="breakdown-detail breakdown-detail--right" id="breakdownDetail" aria-live="polite">
+              <div class="breakdown-detail-body" id="breakdownDetailBody">
+                <span class="breakdown-detail-index" id="breakdownDetailIndex">Tip</span>
+                <h4 id="breakdownDetailTitle">Select a marker</h4>
+                <p id="breakdownDetailText">Click any numbered marker on the ad, or use the arrows below, to step through every decision.</p>
+              </div>
+            </aside>
           </div>
 
-          <aside class="breakdown-detail" id="breakdownDetail" aria-live="polite">
-            <div class="breakdown-detail-body" id="breakdownDetailBody">
-              <span class="breakdown-detail-index" id="breakdownDetailIndex">Tip</span>
-              <h4 id="breakdownDetailTitle">Select a marker</h4>
-              <p id="breakdownDetailText">Click any numbered marker on the ad to read the reasoning behind it.</p>
-            </div>
-          </aside>
+          <div class="breakdown-tour-controls">
+            <button type="button" class="breakdown-tour-btn" id="breakdownPrev" aria-label="Previous decision">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4 L6 10 L12 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <span class="breakdown-tour-counter"><span id="breakdownCounterCurrent">–</span> / <span id="breakdownCounterTotal">10</span></span>
+            <button type="button" class="breakdown-tour-btn" id="breakdownNext" aria-label="Next decision">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4 L14 10 L8 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
         </div>
-        <p class="breakdown-hint">Tip: click any numbered marker on the ad to read the reasoning behind it.</p>
+        <p class="breakdown-hint">Tip: click any numbered marker, or use the arrows above, to step through every decision.</p>
       </div>
     </div>
   </section>
@@ -569,35 +579,11 @@
     </div>
   </section>
 
-  <!-- ============================== 8. ABOUT ============================== -->
-  <section class="about" id="about">
-    <div class="container about-inner">
-      <div class="about-content reveal">
-        <p class="eyebrow">08 About the Designer</p>
-        <h2>About the Designer</h2>
-        <p>Roman Jahandideh is a graphic designer and visual storyteller based in Vancouver, combining brand design, motion, 3D visualization, and interactive media. His work focuses on visual hierarchy, concept driven communication, and building memorable digital and print assets.</p>
-
-        <ul class="skills-list" aria-label="Skills">
-          <li>Graphic Design</li>
-          <li>Typography</li>
-          <li>Brand Systems</li>
-          <li>3D Visualization</li>
-          <li>Motion Design</li>
-          <li>Interactive Media</li>
-          <li>AI Assisted Creative Direction</li>
-          <li>Adobe Creative Suite</li>
-          <li>Figma</li>
-          <li>HTML / CSS / JavaScript</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== 9. CONTACT ============================== -->
+  <!-- ============================== 8. CONTACT ============================== -->
   <section class="contact" id="contact">
     <div class="container">
       <header class="section-head reveal">
-        <p class="eyebrow">09 Contact</p>
+        <p class="eyebrow">08 Contact</p>
         <h2>Let's talk about the next project</h2>
       </header>
 

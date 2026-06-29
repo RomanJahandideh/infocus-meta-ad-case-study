@@ -471,18 +471,23 @@
   (function setupHotspots() {
     var layer = document.getElementById("hotspotLayer");
     if (!layer) return;
+    var detailEl = document.getElementById("breakdownDetail");
     var detailBody = document.getElementById("breakdownDetailBody");
     var detailIndexEl = document.getElementById("breakdownDetailIndex");
     var detailTitleEl = document.getElementById("breakdownDetailTitle");
     var detailTextEl = document.getElementById("breakdownDetailText");
+    var counterCurrentEl = document.getElementById("breakdownCounterCurrent");
+    var counterTotalEl = document.getElementById("breakdownCounterTotal");
+    var prevBtn = document.getElementById("breakdownPrev");
+    var nextBtn = document.getElementById("breakdownNext");
+    var stage = document.querySelector(".breakdown-stage");
     var BADGE_OFFSET = 30; // px the numbered badge sits away from its anchor point
-    var activeBtn = null;
+    var buttons = [];
+    var activeIndex = -1;
+    var tourTimer = null;
+    var userInteracted = false;
 
-    function closeAll() {
-      layer.querySelectorAll(".hotspot-tooltip.is-visible").forEach(function (t) { t.classList.remove("is-visible"); });
-      layer.querySelectorAll(".hotspot.is-active").forEach(function (b) { b.classList.remove("is-active"); b.setAttribute("aria-expanded", "false"); });
-      activeBtn = null;
-    }
+    if (counterTotalEl) counterTotalEl.textContent = pad(HOTSPOTS.length);
 
     function showDetail(n, spot) {
       if (!detailBody) return;
@@ -494,11 +499,35 @@
       detailBody.classList.add("is-animating");
     }
 
+    function activate(index) {
+      if (index < 0 || index >= HOTSPOTS.length) return;
+      buttons.forEach(function (b) { b.classList.remove("is-active"); b.setAttribute("aria-pressed", "false"); });
+      var btn = buttons[index];
+      btn.classList.add("is-active");
+      btn.setAttribute("aria-pressed", "true");
+      activeIndex = index;
+      if (counterCurrentEl) counterCurrentEl.textContent = pad(index + 1);
+      var spot = HOTSPOTS[index];
+      // On wide screens the detail card floats beside the ad rather than
+      // below it; keep it on whichever side has more room for this marker.
+      if (detailEl) {
+        var onRight = spot.x <= 50;
+        detailEl.classList.toggle("breakdown-detail--right", onRight);
+        detailEl.classList.toggle("breakdown-detail--left", !onRight);
+      }
+      showDetail(index + 1, spot);
+    }
+
+    function stopTour() {
+      userInteracted = true;
+      if (tourTimer) { clearTimeout(tourTimer); tourTimer = null; }
+    }
+
     HOTSPOTS.forEach(function (spot, i) {
       var n = i + 1;
 
-      // Direction points the badge (and its leader line) away from the
-      // nearest edge, toward the middle of the ad, so it stays in frame.
+      // Direction points the badge away from the nearest edge, toward the
+      // middle of the ad, so it stays in frame.
       var dx = spot.x > 60 ? -BADGE_OFFSET : BADGE_OFFSET;
       var dy = spot.y > 65 ? -BADGE_OFFSET : BADGE_OFFSET;
       var leaderLength = Math.round(Math.sqrt(dx * dx + dy * dy));
@@ -523,36 +552,56 @@
       btn.type = "button"; btn.className = "hotspot"; btn.textContent = String(n);
       btn.style.setProperty("--dx", dx + "px");
       btn.style.setProperty("--dy", dy + "px");
-      btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-label", cleanDisplayText(n + ". " + spot.title + " show explanation"));
-
-      var arrow = document.createElement("span");
-      arrow.className = "hotspot-arrow";
-      arrow.setAttribute("aria-hidden", "true");
-      arrow.innerHTML = '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      btn.appendChild(arrow);
-
-      var tooltip = document.createElement("div"); tooltip.className = "hotspot-tooltip"; tooltip.id = "hotspot-tip-" + n; tooltip.setAttribute("role", "dialog");
-      tooltip.innerHTML = "<h5>" + cleanDisplayText(n + ". " + spot.title) + "</h5><p>" + cleanDisplayText(spot.text) + "</p>";
-      if (spot.x > 60) { tooltip.style.right = 100 - spot.x + 4 + "%"; tooltip.style.left = "auto"; } else { tooltip.style.left = spot.x + 4 + "%"; tooltip.style.right = "auto"; }
-      if (spot.y > 65) { tooltip.style.bottom = 100 - spot.y + 6 + "%"; tooltip.style.top = "auto"; } else { tooltip.style.top = spot.y + "%"; tooltip.style.bottom = "auto"; }
-      btn.setAttribute("aria-controls", tooltip.id);
+      btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", cleanDisplayText(n + ". " + spot.title + " show explanation"));
 
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
-        var willOpen = !tooltip.classList.contains("is-visible");
-        closeAll();
-        if (willOpen) { tooltip.classList.add("is-visible"); btn.classList.add("is-active"); btn.setAttribute("aria-expanded", "true"); activeBtn = btn; }
-        showDetail(n, spot);
+        stopTour();
+        activate(i);
       });
 
       group.appendChild(anchor);
       group.appendChild(leader);
       group.appendChild(btn);
       layer.appendChild(group);
-      layer.appendChild(tooltip);
+      buttons.push(btn);
     });
-    document.addEventListener("click", function (e) { if (activeBtn && !layer.contains(e.target)) closeAll(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
+
+    if (prevBtn) prevBtn.addEventListener("click", function () {
+      stopTour();
+      var base = activeIndex < 0 ? 0 : activeIndex;
+      activate((base - 1 + HOTSPOTS.length) % HOTSPOTS.length);
+    });
+    if (nextBtn) nextBtn.addEventListener("click", function () {
+      stopTour();
+      var base = activeIndex < 0 ? -1 : activeIndex;
+      activate((base + 1) % HOTSPOTS.length);
+    });
+
+    // First time the breakdown comes into view, walk through every marker
+    // once automatically so the interaction introduces itself, then hand
+    // control over. Cancelled the moment the visitor steps in themselves.
+    var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (stage && !reducedMotion && "IntersectionObserver" in window) {
+      var played = false;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !played && !userInteracted) {
+            played = true;
+            io.disconnect();
+            var step = 0;
+            function runStep() {
+              if (userInteracted) return;
+              activate(step);
+              step += 1;
+              if (step < HOTSPOTS.length) tourTimer = setTimeout(runStep, 1500);
+            }
+            tourTimer = setTimeout(runStep, 700);
+          }
+        });
+      }, { threshold: 0.5 });
+      io.observe(stage);
+    }
   })();
 
   /* ---------------------------------------------------------------------
