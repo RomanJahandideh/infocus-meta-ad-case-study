@@ -767,6 +767,11 @@ body.lightbox-open { overflow: hidden; }
   box-shadow: 0 24px 60px -32px rgba(17, 17, 17, 0.38);
   aspect-ratio: 4 / 5;
   min-height: 0;
+  /* Give this clipped, rounded box its own compositing layer. Without it,
+     mobile Safari can fail to clip overflow on an element that merely
+     inherits a 3D context from the .process-stage tilt ancestor, letting
+     the image spill past its rounded corners. */
+  transform: translateZ(0);
 }
 .process-image-wrap img {
   width: 100%; height: 100%;

@@ -233,11 +233,13 @@
      stage card, shared across every major panel and card on the site
   --------------------------------------------------------------------- */
   (function setupTilt() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     var targets = document.querySelectorAll(
       "#zoomFrame, .gestalt-figure-frame, .gestalt-card, .rationale-visual, .rationale-card, .compare-frame, .breakdown-frame-wrap, .download-card"
     );
     targets.forEach(function (el) {
       el.addEventListener("pointermove", function (e) {
+        if (e.pointerType !== "mouse") return; // touch/pen shouldn't get a stuck hover tilt
         if (e.buttons) return; // don't fight an active drag or click on the element
         var rect = el.getBoundingClientRect();
         var x = (e.clientX - rect.left) / rect.width - 0.5;
