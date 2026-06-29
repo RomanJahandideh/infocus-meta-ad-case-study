@@ -812,7 +812,7 @@ body.lightbox-open { overflow: hidden; }
 
 .process-brief {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
   margin-bottom: 30px;
 }
@@ -820,6 +820,11 @@ body.lightbox-open { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   min-height: 32px;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   padding: 7px 12px;
   border-radius: var(--radius-pill);
   background: rgba(18, 78, 120, 0.08);
