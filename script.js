@@ -456,18 +456,16 @@
      Final Ad Breakdown, numbered hotspots
   --------------------------------------------------------------------- */
   var HOTSPOTS = [
-    { x: 9, y: 9, title: "Logo", text: "The red dot inside the square mark doubles as a focus or aperture cue, brand recognition built into the InFocus name." },
-    { x: 12, y: 18, title: "Program Label", text: "A small red tag that immediately tells the viewer which specific program this ad is for." },
-    { x: 25, y: 27, title: "Headline", text: "Bold two tone type sets up the program name and gives the ad its visual anchor before anything else is read." },
-    { x: 22, y: 42, title: "Subheadline", text: "One sentence that turns the program into a personal outcome: build your creative future." },
-    { x: 19, y: 59, title: "Key Benefits", text: "Three scannable lines (branding, real projects, portfolio) so the offer reads in seconds." },
-    { x: 70, y: 38, title: "Film Reel", text: "The hero object's main body, tying the program directly to InFocus Film School's identity." },
-    { x: 79, y: 28, title: "Exposed Compartments", text: "Transparent windows reveal real design tools inside the reel, craft made visible, not just implied." },
-    { x: 42, y: 62, title: "Deconstructed Pencil", text: "A second hero object paired with the reel, standing for drawing, layout, and hands on design practice." },
-    { x: 49, y: 73, title: "Scattered Pieces", text: "Loose pieces in front of both objects read as work in progress, creativity as something built, not finished." },
-    { x: 16, y: 86, title: "Start Date", text: "A concrete date gives the offer a real deadline instead of an open ended invitation." },
-    { x: 50, y: 86, title: "Countdown", text: "The \"3 days to start\" callout stacks urgency directly on top of the date." },
-    { x: 79, y: 86, title: "Call to Action", text: "The one red button on the page, every other red accent leads the eye toward this." }
+    { x: 9, y: 6, title: "Logo", text: "The InFocus mark sits top left for instant recognition, its red dot becomes the same accent used on the reel's cap and the Apply button." },
+    { x: 46, y: 30, title: "Red Reel Cap", text: "Echoes the logo's red dot and turns the center of the reel into the ad's focal point." },
+    { x: 64, y: 13, title: "LEGO Reel Shell", text: "Built from LEGO style pieces to stand for construction, learning, and creative problem solving." },
+    { x: 68, y: 38, title: "Real Film Roll", text: "A real, photographed film roll inside the brick shell keeps the metaphor grounded in actual filmmaking." },
+    { x: 83, y: 54, title: "Film Strip", text: "A real filmstrip trails out of the reel, adding motion and pulling the eye across the composition." },
+    { x: 32, y: 52, title: "Scattered Pieces", text: "Loose bricks and an incomplete shell show the build still in progress, not yet a finished portfolio." },
+    { x: 18, y: 57, title: "Pencil", text: "A classic orange pencil, the simplest possible cue for graphic design and hands on sketching." },
+    { x: 50, y: 66, title: "Headline", text: "\"Graphic + Digital Design\" with build pulled out in red to echo the construction metaphor." },
+    { x: 50, y: 77, title: "Program Details", text: "Five fast proof points, a certification line, and a start date remove every practical objection." },
+    { x: 50, y: 96, title: "Apply Now Button", text: "The one button on the page, every red accent on the ad leads the eye toward this." }
   ];
 
   (function setupHotspots() {

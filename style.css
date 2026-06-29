@@ -431,7 +431,7 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
 .rationale-visual {
   position: sticky;
   top: calc(var(--header-h) + 40px);
-  aspect-ratio: 1080 / 1350;
+  aspect-ratio: 1055 / 1491;
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--line);
@@ -486,6 +486,18 @@ section[id] { scroll-margin-top: var(--header-h); position: relative; z-index: 1
 .rationale-icon svg { width: 26px; height: 26px; }
 .rationale-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 0; }
 .rationale-card p { color: var(--ink-muted); line-height: 1.72; font-size: 0.97rem; max-width: 480px; }
+.rationale-gestalt-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--radius-pill);
+  padding: 3px 11px;
+}
 
 @media (max-width: 900px) {
   .rationale-layout { grid-template-columns: 1fr; }
